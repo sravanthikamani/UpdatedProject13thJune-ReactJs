@@ -1,0 +1,78 @@
+.awesome-left-section {
+  display: flex;
+  flex-direction: row;
+  background-color: #f1f5f9;
+  width: 1280px;
+}
+
+.awesome-section {
+  display: flex;
+  flex-direction: row;
+  padding-top: 44px;
+  padding-right: 52px;
+}
+.awesome-right-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #304766;
+  width: 800px;
+  height: 579px;
+  border-radius: 0px 16px 16px 0px;
+}
+
+.form-details-awesome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 150px;
+}
+.awesome-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  width: 451px;
+  height: 300px;
+  border-radius: 16px;
+}
+
+.tick-img {
+  width: 64px;
+  height: 64px;
+}
+
+.awesome-heading {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+.awesome-paragraph {
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+
+.awesome-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  width: 133px;
+  height: 32px;
+  padding: 6px 12px 6px 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 1px 0px 0px #00000014;
+}

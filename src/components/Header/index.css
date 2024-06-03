@@ -1,0 +1,106 @@
+.nav-header {
+  background-color: #304766;
+  width: 1280px;
+  max-width: 1400px;
+  height: 93px;
+  display: flex;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1110px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+.travel-heading {
+  color: #ffffff;
+  font-family: 'Caveat';
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  text-decoration: none;
+  text-align: center;
+  width: 116px;
+  height: 44px;
+  margin-left: 162px;
+  margin-top: 15px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  flex: 1;
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.nav-menu-item {
+  font-family: 'Roboto';
+  margin: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  padding-right: 32px;
+  margin-top: 23px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  line-height: 28px;
+}
+
+.logout-button {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  width: 103px;
+  height: 48px;
+  margin-top: 23px;
+  padding: 12px 24px 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #304766;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 766px) {
+  .nav-header {
+    display: none;
+  }
+
+  .nav-content {
+    display: none;
+  }
+
+  .travel-heading {
+    display: none;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu-item {
+    display: none;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .logout-button {
+    display: none;
+  }
+}

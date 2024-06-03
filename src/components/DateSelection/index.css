@@ -1,0 +1,137 @@
+.dateselection-left-section {
+  display: flex;
+  flex-direction: row;
+  background-color: #f1f5f9;
+  width: 1280px;
+}
+
+.dateselection-section {
+  display: flex;
+  flex-direction: row;
+  padding-top: 44px;
+  padding-right: 52px;
+}
+.dateselection-right-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #304766;
+  width: 800px;
+  height: 579px;
+  border-radius: 0px 16px 16px 0px;
+}
+
+.dateselection-heading {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  text-align: center;
+  padding-top: 28px;
+}
+
+.dateselection-paragraph {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.form-details-dateselection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.dateselection-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #ffffff;
+  width: 448px;
+  height: 296px;
+  border-radius: 16px;
+}
+
+.date-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 40px;
+  padding-top: 26px;
+  padding-bottom: 4px;
+}
+.label-date {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+}
+
+.input-date {
+  color: #232a33;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  width: 352px;
+  height: 38px;
+  padding: 9px 13px 9px 13px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  box-shadow: 0px 1px 2px 0px #00000014;
+}
+
+.dateselection-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding-left: 125px;
+  padding-top: 22px;
+}
+
+.dateselection-previous {
+  flex-direction: row;
+  padding-left: 22px;
+}
+
+.dateselection-previous-button {
+  width: 82px;
+  height: 32px;
+  color: #2563eb;
+  background-color: #dbeafe;
+  padding: 6px 12px 6px 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+}
+
+.dateselection-next-button {
+  width: 56px;
+  height: 32px;
+  padding: 6px 12px 6px 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0px -1px 0px 0px #00000033 inset;
+}

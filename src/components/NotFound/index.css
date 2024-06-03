@@ -1,0 +1,64 @@
+.not-found-container {
+  background-color: #ffffff;
+  width: 1280px;
+  height: 898px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound-image {
+  width: 347px;
+  height: 290px;
+}
+
+.notfound-heading {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+.notfound-description {
+  color: #334155cc;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+@media screen and (max-width: 766px) {
+  .notfound-description {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .mobile-notfound-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .not-found-container {
+    width: 360px;
+    height: 800px;
+  }
+  .notfound-image {
+    width: 212.75px;
+    height: 177.8px;
+  }
+  .notfound-heading {
+    font-size: 16px;
+  }
+  .mobile-notfound-description {
+    font-size: 14px;
+    text-align: center;
+  }
+}
