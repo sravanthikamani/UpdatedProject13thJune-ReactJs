@@ -73,6 +73,11 @@
   line-height: 20px;
   text-align: left;
 }
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
 
 .input-date {
   color: #232a33;

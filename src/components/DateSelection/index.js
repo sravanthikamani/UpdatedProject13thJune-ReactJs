@@ -1,30 +1,24 @@
+import React, {Component, useContext} from 'react'
 import {Link} from 'react-router-dom'
-import {Component} from 'react'
+import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
-
 import './index.css'
 
 class DateSelection extends Component {
-  state = {
-    startDate: '',
-    endDate: '',
+  handleChangeStartDate = event => {
+    const {updateFormData} = this.context
+    updateFormData('startDate', event.target.value)
   }
 
-  onChangeStartDate = event => {
-    this.setState({startDate: event.target.value})
-  }
-
-  onChangeEndDate = event => {
-    this.setState({endDate: event.target.value})
-  }
-
-  submitFormDateSelection = event => {
-    event.preventDefault()
+  handleChangeEndDate = event => {
+    const {updateFormData} = this.context
+    updateFormData('endDate', event.target.value)
   }
 
   render() {
-    const {startDate, endDate} = this.state
+    const {formData} = this.context
+    const {startDate, endDate} = formData
 
     return (
       <>
@@ -54,7 +48,7 @@ class DateSelection extends Component {
                       name="startDate"
                       value={startDate}
                       placeholder="dd/mm/yyyy"
-                      onChange={this.onChangeStartDate}
+                      onChange={this.handleChangeStartDate}
                     />
                   </div>
 
@@ -69,7 +63,7 @@ class DateSelection extends Component {
                       value={endDate}
                       name="endDate"
                       placeholder="dd/mm/yyyy"
-                      onChange={this.onChangeEndDate}
+                      onChange={this.handleChangeEndDate}
                     />
                   </div>
 
@@ -102,4 +96,6 @@ class DateSelection extends Component {
     )
   }
 }
+
+DateSelection.contextType = FormContext
 export default DateSelection

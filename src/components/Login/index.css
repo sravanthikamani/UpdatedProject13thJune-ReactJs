@@ -21,19 +21,20 @@
 }
 
 .travel-heading {
-  color: #334155;
-  font-family: 'Caveat';
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 44px;
-  letter-spacing: 0.1px;
-  text-align: center;
-  width: 116px;
-  height: 44px;
-  padding-top: 40px;
-  padding-bottom: 60px;
-  margin-bottom: 18px;
-  margin-top: 22px;
+
+font-size: 32px;
+font-weight: 700;
+line-height: 44px;
+letter-spacing: 0.10000000149011612px;
+text-align: center;
+width: 116px;
+height: 44px;
+top: 222px;
+left: 625px;
+gap: 0px;
+opacity: 0px;
+background: #334155;
+
 }
 
 .input-container {

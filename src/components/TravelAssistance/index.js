@@ -1,105 +1,100 @@
-import {Link} from 'react-router-dom'
-import {Component} from 'react'
+import React, {Component, useContext} from 'react'
+import {withRouter} from 'react-router-dom'
+import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
-
 import './index.css'
 
-const travelAssistanceList = [
-  {value: 'car', displayText: 'Car'},
-  {value: 'flight', displayText: 'Flight'},
-  {value: 'bus', displayText: 'Bus'},
-  {value: 'train', displayText: 'Train'},
-]
-
 class TravelAssistance extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isTravelAssistanceNeeded: false,
-    }
+  handleChange = event => {
+    const {updateFormData} = this.context
+    updateFormData('isTravelAssistanceNeeded', event.target.checked)
   }
 
-  handleCheckboxChange = event => {
-    this.setState({isTravelAssistanceNeeded: event.target.checked})
+  handleSelectChange = event => {
+    const {updateFormData} = this.context
+    updateFormData('travelAssistanceType', event.target.value)
   }
 
-  submitFormTravel = event => {
-    event.preventDefault()
+  handleNextClick = () => {
+    const {history} = this.props
+    history.replace('/confirmation')
+  }
+
+  handlePreviousClick = () => {
+    const {history} = this.props
+    history.replace('/guests')
   }
 
   render() {
-    const {isTravelAssistanceNeeded} = this.state
+    const {formData} = this.context
+    const {isTravelAssistanceNeeded, travelAssistanceType} = formData
+
     return (
       <>
         <Header />
-        <div className="travelassistance-left-section">
+        <div className="travel-assistance-left-section">
           <SideBar />
-          <div className="travelassistance-section">
-            <div className="travelassistance-right-section">
-              <h1 className="travelassistance-heading">Travel Assistance</h1>
-              <p className="travelassistance-paragraph">
-                Select your Travel Assistance.
+          <div className="travel-assistance-section">
+            <div className="travel-assistance-right-section">
+              <h1 className="travel-assistance-heading">Travel Assistance</h1>
+              <p className="travel-assistance-paragraph">
+                Select the required assistance
               </p>
-
               <form
-                className="form-details-travelassistance"
-                onSubmit={this.submitFormTravel}
+                className="form-details-travel-assistance"
+                onSubmit={this.submitFormTravelAssistance}
               >
-                <div className="travelassistance-form">
-                  <div className="travelassistance-input-container">
+                <div className="travel-assistance-form">
+                  <div className="travel-assistance-checkbox">
+                    <label
+                      className="label-checkbox"
+                      htmlFor="travelAssistance"
+                    >
+                      Need Travel Assistance?
+                    </label>
                     <input
                       type="checkbox"
-                      id="travelid"
-                      onChange={this.handleCheckboxChange}
+                      id="travelAssistance"
+                      checked={isTravelAssistanceNeeded}
+                      onChange={this.handleChange}
                     />
-                    <label
-                      htmlFor="travelid"
-                      className="travel-label"
-                      type="checkbox"
-                    >
-                      Travel Assistance Needed
-                    </label>
                   </div>
-
                   {isTravelAssistanceNeeded && (
-                    <div className="select-container">
+                    <div className="travel-assistance-dropdown">
                       <label
-                        htmlFor="travelAssistanceSelect"
-                        className="travel-select-label"
+                        className="label-dropdown"
+                        htmlFor="assistanceType"
                       >
-                        Travel Assistance
+                        Assistance Type
                       </label>
                       <select
-                        className="select-section"
-                        id="travelAssistanceSelect"
+                        id="assistanceType"
+                        value={travelAssistanceType}
+                        onChange={this.handleSelectChange}
                       >
-                        {travelAssistanceList.map(option => (
-                          <option
-                            className="select-option"
-                            value={option.value}
-                            key={option.value}
-                          >
-                            {option.displayText}
-                          </option>
-                        ))}
+                        <option value="">Select</option>
+                        <option value="type1">Type 1</option>
+                        <option value="type2">Type 2</option>
+                        <option value="type3">Type 3</option>
                       </select>
                     </div>
                   )}
-
-                  <div className="travelassistance-container">
-                    <Link to="/guests">
-                      <button type="button" className="travel-previous-button">
-                        Previous
-                      </button>
-                    </Link>
-                    <div className="travelassistance-previous">
-                      <Link to="/confirmation">
-                        <button type="button" className="travel-next-button">
-                          Next
-                        </button>
-                      </Link>
-                    </div>
+                  <div className="travel-assistance-button-container">
+                    <button
+                      className="travel-assistance-prev-button"
+                      type="button"
+                      onClick={this.handlePreviousClick}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      className="travel-assistance-next-button"
+                      type="button"
+                      onClick={this.handleNextClick}
+                    >
+                      Next
+                    </button>
                   </div>
                 </div>
               </form>
@@ -110,4 +105,6 @@ class TravelAssistance extends Component {
     )
   }
 }
-export default TravelAssistance
+TravelAssistance.contextType = FormContext
+
+export default withRouter(TravelAssistance)

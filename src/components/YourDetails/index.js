@@ -1,35 +1,20 @@
+import React, {Component, useContext} from 'react'
 import {Link} from 'react-router-dom'
-import {Component} from 'react'
+import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
-
 import './index.css'
 
 class YourDetails extends Component {
-  state = {
-    name: '',
-    startLocation: '',
-    endLocation: '',
-    errors: {
-      name: '',
-      startLocation: '',
-      endLocation: '',
-    },
-  }
-
   handleChange = e => {
     const {name, value} = e.target
-    this.setState(prevState => ({
-      [name]: value,
-      errors: {
-        ...prevState.errors,
-        [name]: value.trim() === '' ? `Enter your ${name}` : '',
-      },
-    }))
+    const {updateFormData} = this.context
+    updateFormData(name, value)
   }
 
   handleNext = () => {
-    const {name, startLocation, endLocation} = this.state
+    const {formData, updateFormData} = this.context
+    const {name, startLocation, endLocation} = formData
     const errors = {}
     if (!name.trim()) {
       errors.name = 'Enter your name'
@@ -40,19 +25,15 @@ class YourDetails extends Component {
     if (!endLocation.trim()) {
       errors.endLocation = 'Enter your end location'
     }
-    this.setState({errors})
+    updateFormData('errors', errors)
     if (Object.keys(errors).length === 0) {
-      // Proceed to the next step
       console.log('Proceeding to next step')
     }
   }
 
-  submitFormYourDetails = event => {
-    event.preventDefault()
-  }
-
   render() {
-    const {name, startLocation, endLocation, errors} = this.state
+    const {formData} = this.context
+    const {name, startLocation, endLocation, errors = {}} = formData
 
     return (
       <>
@@ -141,4 +122,6 @@ class YourDetails extends Component {
     )
   }
 }
+YourDetails.contextType = FormContext
+
 export default YourDetails
