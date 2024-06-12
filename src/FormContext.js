@@ -16,13 +16,27 @@ const FormProvider = ({children}) => {
     },
     isTravelAssistanceNeeded: false,
     travelAssistanceType: '',
+    totalGuests: '',
   })
-
-  const updateFormData = (key, value) => {
+  const updateTotalGuests = guests => {
+    const {adults, children, infants} = guests
+    const totalGuests = adults + children + infants
     setFormData(prevState => ({
       ...prevState,
-      [key]: value,
+      totalGuests,
     }))
+  }
+  const updateFormData = (key, value) => {
+    setFormData(prevState => {
+      const newFormData = {
+        ...prevState,
+        [key]: value,
+      }
+      if (key === 'guests') {
+        updateTotalGuests(value)
+      }
+      return newFormData
+    })
   }
 
   return (

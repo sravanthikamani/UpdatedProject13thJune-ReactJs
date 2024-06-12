@@ -12,7 +12,10 @@ class Guests extends Component {
     guests[type] += 1
     updateFormData('guests', guests)
   }
-
+  getTotalGuestsCount = () => {
+    const {adults, children, infants} = this.state
+    return adults + children + infants
+  }
   handleDecrement = type => {
     const {formData, updateFormData} = this.context
     const guests = {...formData.guests}
@@ -33,7 +36,8 @@ class Guests extends Component {
 
   render() {
     const {formData} = this.context
-    const {adults, children, infants} = formData.guests
+    const {adults, infants, children} = formData.guests
+    const {totalGuests} = formData
 
     return (
       <>
@@ -135,6 +139,9 @@ class Guests extends Component {
                       </button>
                     </div>
                   </div>
+                  <p className="total-guests">
+                    Total Count of the Guests : {totalGuests}
+                  </p>
                   <div className="guest-button-container">
                     <button
                       className="guest-prev-button"

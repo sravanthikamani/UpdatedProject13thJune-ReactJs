@@ -33,20 +33,20 @@ class TravelAssistance extends Component {
     return (
       <>
         <Header />
-        <div className="travel-assistance-left-section">
+        <div className="travelassistance-left-section">
           <SideBar />
-          <div className="travel-assistance-section">
-            <div className="travel-assistance-right-section">
-              <h1 className="travel-assistance-heading">Travel Assistance</h1>
-              <p className="travel-assistance-paragraph">
-                Select the required assistance
+          <div className="travelassistance-section">
+            <div className="travelassistance-right-section">
+              <h1 className="travelassistance-heading">Travel Assistance</h1>
+              <p className="travelassistance-paragraph">
+                Select your Travel Assistance.
               </p>
               <form
-                className="form-details-travel-assistance"
+                className="form-details-travelassistance"
                 onSubmit={this.submitFormTravelAssistance}
               >
-                <div className="travel-assistance-form">
-                  <div className="travel-assistance-checkbox">
+                <div className="travelassistance-form">
+                  <div className="travelassistance-input-container">
                     <label
                       className="label-checkbox"
                       htmlFor="travelAssistance"
@@ -63,7 +63,7 @@ class TravelAssistance extends Component {
                   {isTravelAssistanceNeeded && (
                     <div className="travel-assistance-dropdown">
                       <label
-                        className="label-dropdown"
+                        className="travel-select-label"
                         htmlFor="assistanceType"
                       >
                         Assistance Type
@@ -74,22 +74,22 @@ class TravelAssistance extends Component {
                         onChange={this.handleSelectChange}
                       >
                         <option value="">Select</option>
-                        <option value="type1">Type 1</option>
-                        <option value="type2">Type 2</option>
-                        <option value="type3">Type 3</option>
+                        <option value="Car">Car</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Train">Train</option>
                       </select>
                     </div>
                   )}
-                  <div className="travel-assistance-button-container">
+                  <div className="travelassistance-container">
                     <button
-                      className="travel-assistance-prev-button"
+                      className="travel-previous-button"
                       type="button"
                       onClick={this.handlePreviousClick}
                     >
                       Previous
                     </button>
                     <button
-                      className="travel-assistance-next-button"
+                      className="travel-next-button"
                       type="button"
                       onClick={this.handleNextClick}
                     >
