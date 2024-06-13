@@ -18,6 +18,11 @@ const FormProvider = ({children}) => {
     travelAssistanceType: '',
     totalGuests: '',
   })
+  const [trips, setTrips] = useState([]) // Add trips state
+
+  const addTrip = trip => {
+    setTrips(prevTrips => [...prevTrips, trip])
+  }
   const updateTotalGuests = guests => {
     const {adults, children, infants} = guests
     const totalGuests = adults + children + infants
@@ -40,7 +45,7 @@ const FormProvider = ({children}) => {
   }
 
   return (
-    <FormContext.Provider value={{formData, updateFormData}}>
+    <FormContext.Provider value={{formData, updateFormData, trips, addTrip}}>
       {children}
     </FormContext.Provider>
   )

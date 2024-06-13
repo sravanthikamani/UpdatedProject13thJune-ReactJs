@@ -1,43 +1,40 @@
-import {Link} from 'react-router-dom'
+import React, {useContext} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import ContextValue from '../../context/ContextValue'
+import {FormContext} from '../../FormContext'
 import Footer from '../Footer'
-
 import './index.css'
 
-const MyTrips = props => {
-  const {history} = props
+const MyTrips = () => {
+  const history = useHistory()
+  const {trips} = useContext(FormContext)
   const onClickLogout = () => {
     Cookies.remove('jwt_token')
     history.replace('/login')
   }
+  
 
   return (
-    <ContextValue.Consumer>
-      {value => {
-        const {isMyTrips} = value
-        return (
+    
           <>
             <nav className="nav-headertrip">
               <div className="nav-contenttrip">
                 <Link to="/" className="travel-headingtrip">
                   Travel Trip
                 </Link>
-
                 <ul className="nav-menutrip">
                   <li className="nav-menu-itemtrip">
                     <Link to="/" className="nav-linktrip">
                       Home
                     </Link>
                   </li>
-
                   <li className="nav-menu-itemtrip">
                     <Link to="/my-trips" className="nav-linktrip">
                       My Trips
                     </Link>
                   </li>
                 </ul>
-
                 <button
                   type="button"
                   className="logout-buttontrip"
@@ -47,10 +44,20 @@ const MyTrips = props => {
                 </button>
               </div>
             </nav>
-            )
-            {isMyTrips === true ? (
+            {trips.length > 0 ? (
               <div>
                 <h1 className="mytrips-heading">My Trips</h1>
+                <ul>
+                  {trips.map(trip => (
+                    <li key={trip.id} className="trip-item">
+                      <h2 className="trip-destination">{trip.name}</h2>
+                      <p className="trip-dates">
+                        {trip.startDate} to {trip.endDate}
+                      </p>
+                      <button className="cancel-trip-button">Cancel</button>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ) : (
               <div className="no-upcoming-container">
@@ -77,9 +84,6 @@ const MyTrips = props => {
             <Footer />
           </>
         )
-      }}
-    </ContextValue.Consumer>
-  )
-}
+}  
 
 export default MyTrips

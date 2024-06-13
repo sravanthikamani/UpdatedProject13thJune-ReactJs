@@ -39,6 +39,9 @@ class Guests extends Component {
     const {adults, infants, children} = formData.guests
     const {totalGuests} = formData
 
+    // Log the text content of the Adults paragraph
+
+    console.log('Adults text content:', adults)
     return (
       <>
         <Header />
@@ -47,117 +50,116 @@ class Guests extends Component {
           <div className="guests-section-guest">
             <div className="guests-right-section">
               <h1 className="guests-heading">Guests</h1>
-              <p className="guests-paragraph">
-                Please enter the following details
-              </p>
+              <p className="guests-paragraph">Select your guests</p>
               <form
                 className="form-details-guests"
                 onSubmit={this.submitFormGuests}
               >
                 <div className="guests-form">
                   <div className="guest-input-container">
-                    <label className="label-guest" htmlFor="adults">
-                      Adults
-                    </label>
-                    <div className="input-container">
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleDecrement('adults')}
-                      >
-                        -
-                      </button>
-                      <input
-                        id="adults"
-                        className="input-guest"
-                        type="text"
-                        value={adults}
-                        readOnly
-                      />
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleIncrement('adults')}
-                      >
-                        +
-                      </button>
-                    </div>
+                    <p className="guests-adults">Adults</p>
+                    <p className="guests-age">Age 13 or above</p>
                   </div>
+                  <div className="adults-container">
+                    <button
+                      className="decrease"
+                      type="button"
+                      onClick={() => this.handleDecrement('adults')}
+                    >
+                      -
+                    </button>
+                    <p
+                      className="adults-number"
+                      name="adults"
+                      data-testid="count-adults"
+                    >
+                      {adults}
+                    </p>
+                    <button
+                      className="increase"
+                      type="button"
+                      onClick={() => this.handleIncrement('adults')}
+                    >
+                      +
+                    </button>
+                  </div>
+
                   <div className="guest-input-container">
-                    <label className="label-guest" htmlFor="children">
-                      Children
-                    </label>
-                    <div className="input-container">
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleDecrement('children')}
-                      >
-                        -
-                      </button>
-                      <input
-                        id="children"
-                        className="input-guest"
-                        type="text"
-                        value={children}
-                        readOnly
-                      />
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleIncrement('children')}
-                      >
-                        +
-                      </button>
-                    </div>
+                    <p className="guests-children">Children</p>
+                    <p className="guests-age">Age 2-12</p>
                   </div>
+                  <div className="adults-container">
+                    <button
+                      className="decrease"
+                      type="button"
+                      onClick={() => this.handleDecrement('children')}
+                    >
+                      -
+                    </button>
+                    <p
+                      className="adults-number"
+                      name="children"
+                      data-testid="count-children"
+                    >
+                      {children}
+                    </p>
+                    <button
+                      className="increase"
+                      type="button"
+                      onClick={() => this.handleIncrement('children')}
+                    >
+                      +
+                    </button>
+                  </div>
+
                   <div className="guest-input-container">
-                    <label className="label-guest" htmlFor="infants">
-                      Infants
-                    </label>
-                    <div className="input-container">
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleDecrement('infants')}
-                      >
-                        -
-                      </button>
-                      <input
-                        id="infants"
-                        className="input-guest"
-                        type="text"
-                        value={infants}
-                        readOnly
-                      />
-                      <button
-                        className="increment-decrement-button"
-                        type="button"
-                        onClick={() => this.handleIncrement('infants')}
-                      >
-                        +
-                      </button>
-                    </div>
+                    <p className="guests-infants">Infants</p>
+                    <p className="guests-age">Under 2 years</p>
                   </div>
+                  <div className="adults-container">
+                    <button
+                      className="decrease"
+                      type="button"
+                      onClick={() => this.handleDecrement('infants')}
+                    >
+                      -
+                    </button>
+                    <p
+                      className="adults-number"
+                      name="infants"
+                      data-testid="count-infants"
+                    >
+                      {infants}
+                    </p>
+                    <button
+                      className="increase"
+                      type="button"
+                      onClick={() => this.handleIncrement('infants')}
+                    >
+                      +
+                    </button>
+                  </div>
+
                   <p className="total-guests">
                     Total Count of the Guests : {totalGuests}
                   </p>
-                  <div className="guest-button-container">
+                  <div className="guests-container">
                     <button
-                      className="guest-prev-button"
+                      className="guests-previous-button"
                       type="button"
                       onClick={this.handlePreviousClick}
                     >
                       Previous
                     </button>
-
-                    <button
-                      className="guest-next-button"
-                      type="button"
-                      onClick={this.handleNextClick}
-                    >
-                      Next
-                    </button>
+                    <div className="guests-previous">
+                      <button
+                        className="guests-next-button"
+                        type="button"
+                        onClick={this.handleNextClick}
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
                 </div>
               </form>
