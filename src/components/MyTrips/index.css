@@ -204,3 +204,23 @@
     display: none;
   }
 }
+.trip-item {
+  width: 1042px;
+  height: 140px;
+  top: 189px;
+  left: 162px;
+  gap: 0px;
+  border-radius: 16px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  border: 1px solid #3047665E
+}
+.list-container {
+  width: Fixed (882px) px;
+  height: Hug (60px) px;
+  top: 229px;
+  left: 242px;
+  gap: 0px;
+  justify: space-between;
+  opacity: 0px;
+}

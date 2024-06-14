@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -10,6 +10,19 @@ class YourDetails extends Component {
     const {name, value} = e.target
     const {updateFormData} = this.context
     updateFormData(name, value)
+  }
+
+  handleBlur = e => {
+    const {name} = e.target
+    const {formData, updateFormData} = this.context
+    const value = formData[name]
+
+    let error = ''
+    if (!value.trim()) {
+      error = `Enter your ${name.replace(/([A-Z])/g, ' $1').toLowerCase()}`
+    }
+
+    updateFormData('errors', {...formData.errors, [name]: error})
   }
 
   handleNext = () => {
@@ -65,6 +78,7 @@ class YourDetails extends Component {
                       name="name"
                       placeholder="Enter name"
                       onChange={this.handleChange}
+                      onBlur={this.handleBlur}
                     />
                     {errors.name && <p className="error-name">{errors.name}</p>}
                   </div>
@@ -80,6 +94,7 @@ class YourDetails extends Component {
                       name="startLocation"
                       placeholder="Enter start location"
                       onChange={this.handleChange}
+                      onBlur={this.handleBlur}
                     />
                     {errors.startLocation && (
                       <p className="error-name">{errors.startLocation}</p>
@@ -97,6 +112,7 @@ class YourDetails extends Component {
                       name="endLocation"
                       placeholder="Enter end location"
                       onChange={this.handleChange}
+                      onBlur={this.handleBlur}
                     />
                     {errors.endLocation && (
                       <p className="error-name">{errors.endLocation}</p>
@@ -122,6 +138,7 @@ class YourDetails extends Component {
     )
   }
 }
+
 YourDetails.contextType = FormContext
 
 export default YourDetails

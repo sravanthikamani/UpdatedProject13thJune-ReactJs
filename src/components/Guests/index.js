@@ -12,10 +12,12 @@ class Guests extends Component {
     guests[type] += 1
     updateFormData('guests', guests)
   }
+
   getTotalGuestsCount = () => {
     const {adults, children, infants} = this.state
     return adults + children + infants
   }
+
   handleDecrement = type => {
     const {formData, updateFormData} = this.context
     const guests = {...formData.guests}

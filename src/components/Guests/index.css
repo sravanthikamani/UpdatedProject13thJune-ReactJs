@@ -59,6 +59,7 @@
   justify-content: flex-start;
   padding-left: 48px;
   padding-top: 15px;
+  margin-top: -20px; /* Added margin for spacing above each group */
 }
 
 .guests-adults {
@@ -67,6 +68,8 @@
   font-weight: 600;
   line-height: 20px;
   color: #334155;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .guests-age {
@@ -76,6 +79,7 @@
   line-height: 20px;
   color: #475569;
   margin-top: -8px;
+  margin-left: 20px;
 }
 
 .adults-container {
@@ -133,7 +137,8 @@
   font-weight: 600;
   line-height: 20px;
   color: #334155;
-  margin-top: -15px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .guests-infants {
@@ -142,7 +147,8 @@
   font-weight: 600;
   line-height: 20px;
   color: #334155;
-  margin-top: -15px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .guests-container {

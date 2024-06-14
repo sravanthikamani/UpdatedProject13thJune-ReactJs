@@ -11,6 +11,9 @@
   padding-top: 44px;
   padding-right: 52px;
 }
+.error-date {
+  color: red;
+}
 .dateselection-right-section {
   display: flex;
   flex-direction: column;

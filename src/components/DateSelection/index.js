@@ -1,24 +1,39 @@
-import React, {Component, useContext} from 'react'
-import {Link} from 'react-router-dom'
-import {FormContext} from '../../FormContext'
-import SideBar from '../SideBar'
-import Header from '../Header'
-import './index.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { FormContext } from '../../FormContext';
+import SideBar from '../SideBar';
+import Header from '../Header';
+import './index.css';
 
 class DateSelection extends Component {
   handleChangeStartDate = event => {
-    const {updateFormData} = this.context
-    updateFormData('startDate', event.target.value)
-  }
+    const { updateFormData, updateFormErrors } = this.context;
+    updateFormData('startDate', event.target.value);
+    if (event.target.value) {
+      updateFormErrors({ startDate: '' }); // Clear error if start date is selected
+    }
+  };
 
   handleChangeEndDate = event => {
-    const {updateFormData} = this.context
-    updateFormData('endDate', event.target.value)
-  }
+    const { updateFormData, updateFormErrors, formData } = this.context;
+    const { startDate } = formData;
+    const endDate = event.target.value;
+
+    if (!startDate) {
+      updateFormErrors({ startDate: 'Select start date' }); // Set error if start date is not selected
+    } else if (!endDate) {
+      updateFormErrors({ endDate: 'Select the end date' }); // Set error if end date is not selected
+    } else if (new Date(endDate) < new Date(startDate)) {
+      updateFormErrors({ endDate: 'The end date cannot be less than Start Date' }); // Set error if end date is less than start date
+    } else {
+      updateFormData('endDate', endDate);
+      updateFormErrors({ endDate: '' }); // Clear error if end date is valid
+    }
+  };
 
   render() {
-    const {formData} = this.context
-    const {startDate, endDate} = formData
+    const { formData, formData: { errors } } = this.context;
+    const { startDate, endDate } = formData;
 
     return (
       <>
@@ -34,7 +49,7 @@ class DateSelection extends Component {
 
               <form
                 className="form-details-dateselection"
-                onSubmit={this.submitFormDateSelection}
+                onSubmit={e => e.preventDefault()}
               >
                 <div className="dateselection-form">
                   <div className="date-input-container">
@@ -50,6 +65,7 @@ class DateSelection extends Component {
                       placeholder="dd/mm/yyyy"
                       onChange={this.handleChangeStartDate}
                     />
+                    {errors.startDate && <p className="error-date">{errors.startDate}</p>}
                   </div>
 
                   <div className="date-input-container">
@@ -65,6 +81,7 @@ class DateSelection extends Component {
                       placeholder="dd/mm/yyyy"
                       onChange={this.handleChangeEndDate}
                     />
+                    {errors.endDate && <p className="error-date">{errors.endDate}</p>}
                   </div>
 
                   <div className="dateselection-container">
@@ -77,10 +94,15 @@ class DateSelection extends Component {
                       </button>
                     </Link>
                     <div className="dateselection-previous">
-                      <Link to="/guests">
+                      <Link to={endDate ? "/guests" : "#"}>
                         <button
                           type="button"
                           className="dateselection-next-button"
+                          onClick={() => {
+                            if (!endDate) {
+                              alert("Select the end date"); // Display error message if end date is not selected
+                            }
+                          }}
                         >
                           Next
                         </button>
@@ -93,9 +115,9 @@ class DateSelection extends Component {
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 
-DateSelection.contextType = FormContext
-export default DateSelection
+DateSelection.contextType = FormContext;
+export default DateSelection;

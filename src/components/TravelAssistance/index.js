@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react'
+import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -6,6 +6,16 @@ import Header from '../Header'
 import './index.css'
 
 class TravelAssistance extends Component {
+  constructor(props) {
+    super(props)
+    this.travelAssistanceList = [
+      
+      {value: 'Flight', displayText: 'Flight'},
+      {value: 'Bus', displayText: 'Bus'},
+      {value: 'Train', displayText: 'Train'},
+    ]
+  }
+
   handleChange = event => {
     const {updateFormData} = this.context
     updateFormData('isTravelAssistanceNeeded', event.target.checked)
@@ -13,7 +23,8 @@ class TravelAssistance extends Component {
 
   handleSelectChange = event => {
     const {updateFormData} = this.context
-    updateFormData('travelAssistanceType', event.target.value)
+    const selectedValue = event.target.value.toLowerCase()
+    updateFormData('travelAssistanceType', selectedValue)
   }
 
   handleNextClick = () => {
@@ -47,36 +58,39 @@ class TravelAssistance extends Component {
               >
                 <div className="travelassistance-form">
                   <div className="travelassistance-input-container">
-                    <label
-                      className="label-checkbox"
-                      htmlFor="travelAssistance"
-                    >
-                      Need Travel Assistance?
-                    </label>
                     <input
                       type="checkbox"
                       id="travelAssistance"
                       checked={isTravelAssistanceNeeded}
                       onChange={this.handleChange}
                     />
+                    <label
+                      className="label-checkbox"
+                      htmlFor="travelAssistance"
+                    >
+                      Travel Assistance
+                    </label>
                   </div>
                   {isTravelAssistanceNeeded && (
-                    <div className="travel-assistance-dropdown">
+                    <div className="select-container">
                       <label
                         className="travel-select-label"
                         htmlFor="assistanceType"
                       >
-                        Assistance Type
+                        Travel Assistance
                       </label>
                       <select
                         id="assistanceType"
                         value={travelAssistanceType}
                         onChange={this.handleSelectChange}
+                        className="select-section"
                       >
-                        <option value="">Select</option>
                         <option value="Car">Car</option>
-                        <option value="Bus">Bus</option>
-                        <option value="Train">Train</option>
+                        {this.travelAssistanceList.map(option => (
+                          <option key={option.value} value={option.value}>
+                            {option.displayText}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   )}
@@ -105,6 +119,7 @@ class TravelAssistance extends Component {
     )
   }
 }
+
 TravelAssistance.contextType = FormContext
 
 export default withRouter(TravelAssistance)

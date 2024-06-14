@@ -1,9 +1,8 @@
 import React, {useContext} from 'react'
+import {useHistory, Link} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
-import {useHistory} from 'react-router-dom'
-import {Link} from 'react-router-dom'
 import './index.css'
 
 const Confirmation = () => {
