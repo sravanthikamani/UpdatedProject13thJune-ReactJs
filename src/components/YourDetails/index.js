@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
 
 class YourDetails extends Component {
@@ -66,12 +67,12 @@ class YourDetails extends Component {
                 onSubmit={this.submitFormYourDetails}
               >
                 <div className="your-details-form">
-                  <div className="your-input-container">
+                  <div className="your-input-container input-container">
                     <label htmlFor="name" className="label-name">
                       NAME
                     </label>
                     <input
-                      className="input-name"
+                      className={`input-name ${errors.name ? 'error' : ''}`}
                       type="text"
                       id="name"
                       value={name}
@@ -80,14 +81,19 @@ class YourDetails extends Component {
                       onChange={this.handleChange}
                       onBlur={this.handleBlur}
                     />
+                    {errors.name && (
+                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                    )}
                     {errors.name && <p className="error-name">{errors.name}</p>}
                   </div>
-                  <div className="your-input-container">
+                  <div className="your-input-container input-container">
                     <label htmlFor="start" className="label-name">
                       Start Location
                     </label>
                     <input
-                      className="input-name"
+                      className={`input-name ${
+                        errors.startLocation ? 'error' : ''
+                      }`}
                       type="text"
                       id="start"
                       value={startLocation}
@@ -97,15 +103,20 @@ class YourDetails extends Component {
                       onBlur={this.handleBlur}
                     />
                     {errors.startLocation && (
+                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                    )}
+                    {errors.startLocation && (
                       <p className="error-name">{errors.startLocation}</p>
                     )}
                   </div>
-                  <div className="your-input-container">
+                  <div className="your-input-container input-container">
                     <label htmlFor="end" className="label-name">
                       End Location
                     </label>
                     <input
-                      className="input-name"
+                      className={`input-name ${
+                        errors.endLocation ? 'error' : ''
+                      }`}
                       type="text"
                       id="end"
                       value={endLocation}
@@ -114,6 +125,9 @@ class YourDetails extends Component {
                       onChange={this.handleChange}
                       onBlur={this.handleBlur}
                     />
+                    {errors.endLocation && (
+                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                    )}
                     {errors.endLocation && (
                       <p className="error-name">{errors.endLocation}</p>
                     )}

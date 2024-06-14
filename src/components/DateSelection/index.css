@@ -98,6 +98,18 @@
   box-shadow: 0px 1px 2px 0px #00000014;
 }
 
+.input-date.error {
+  border-color: red; /* Red border for error */
+}
+
+.input-date::placeholder {
+  color:red; /* Default placeholder color */
+}
+
+.input-date.error::placeholder {
+  color: red; /* Red placeholder color for error */
+}
+
 .dateselection-container {
   display: flex;
   flex-direction: row;
