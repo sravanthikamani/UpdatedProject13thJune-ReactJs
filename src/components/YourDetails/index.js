@@ -1,15 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component, useContext} from 'react'
 import {Link} from 'react-router-dom'
+import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
 
 class YourDetails extends Component {
   handleChange = e => {
     const {name, value} = e.target
     const {updateFormData} = this.context
+    console.log('Input change:', name, value) // Log input changes
     updateFormData(name, value)
   }
 
@@ -29,6 +30,7 @@ class YourDetails extends Component {
   handleNext = () => {
     const {formData, updateFormData} = this.context
     const {name, startLocation, endLocation} = formData
+    console.log('Form data on next:', formData) // Log formData on next button click
     const errors = {}
     if (!name.trim()) {
       errors.name = 'Enter your name'
@@ -82,7 +84,7 @@ class YourDetails extends Component {
                       onBlur={this.handleBlur}
                     />
                     {errors.name && (
-                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                      <AiOutlineExclamationCircle className="error-icon" />
                     )}
                     {errors.name && <p className="error-name">{errors.name}</p>}
                   </div>
@@ -103,7 +105,7 @@ class YourDetails extends Component {
                       onBlur={this.handleBlur}
                     />
                     {errors.startLocation && (
-                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                      <AiOutlineExclamationCircle className="error-icon" />
                     )}
                     {errors.startLocation && (
                       <p className="error-name">{errors.startLocation}</p>
@@ -126,7 +128,7 @@ class YourDetails extends Component {
                       onBlur={this.handleBlur}
                     />
                     {errors.endLocation && (
-                      <i className="fas fa-exclamation-circle error-symbol"></i>
+                      <AiOutlineExclamationCircle className="error-icon" />
                     )}
                     {errors.endLocation && (
                       <p className="error-name">{errors.endLocation}</p>

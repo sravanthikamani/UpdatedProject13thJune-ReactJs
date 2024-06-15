@@ -9,7 +9,6 @@ class TravelAssistance extends Component {
   constructor(props) {
     super(props)
     this.travelAssistanceList = [
-      
       {value: 'Flight', displayText: 'Flight'},
       {value: 'Bus', displayText: 'Bus'},
       {value: 'Train', displayText: 'Train'},

@@ -55,7 +55,7 @@ const MyTrips = () => {
             {trips.map(trip => (
               <li key={trip.id} className="trip-item">
                 <div className="list-container">
-                  <h2 className="trip-destination">{trip.endlocation}</h2>
+                  <h2 className="trip-destination">{trip.name}</h2>
                   <p className="trip-dates">
                     {trip.startDate} to {trip.endDate}
                   </p>

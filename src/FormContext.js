@@ -1,8 +1,8 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext, useState} from 'react'
 
-const FormContext = createContext();
+const FormContext = createContext()
 
-const FormProvider = ({ children }) => {
+const FormProvider = ({children}) => {
   const [formData, setFormData] = useState({
     name: '',
     startLocation: '',
@@ -18,37 +18,38 @@ const FormProvider = ({ children }) => {
     travelAssistanceType: '',
     totalGuests: 1, // Initialize with 1 adult as per the default guests state
     errors: {}, // Initialize errors in the initial state
-  });
+  })
 
-  const [trips, setTrips] = useState([]);
-  const [formValid, setFormValid] = useState(false);
-  const [activeTab, setActiveTab] = useState('Your Details');
+  const [trips, setTrips] = useState([])
+  const [formValid, setFormValid] = useState(false)
+  const [activeTab, setActiveTab] = useState('Your Details')
 
   const addTrip = trip => {
-    setTrips(prevTrips => [...prevTrips, trip]);
-  };
+    setTrips(prevTrips => [...prevTrips, trip])
+  }
 
   const updateTotalGuests = guests => {
-    const { adults, children, infants } = guests;
-    const totalGuests = adults + children + infants;
+    const {adults, children, infants} = guests
+    const totalGuests = adults + children + infants
     setFormData(prevState => ({
       ...prevState,
       totalGuests,
-    }));
-  };
+    }))
+  }
 
   const updateFormData = (key, value) => {
     setFormData(prevState => {
       const newFormData = {
         ...prevState,
         [key]: value,
-      };
-      if (key === 'guests') {
-        updateTotalGuests(value);
       }
-      return newFormData;
-    });
-  };
+      if (key === 'guests') {
+        updateTotalGuests(value)
+      }
+      console.log('Updated formData:', newFormData) // Log updated formData
+      return newFormData
+    })
+  }
 
   const updateFormErrors = errors => {
     setFormData(prevState => ({
@@ -57,16 +58,16 @@ const FormProvider = ({ children }) => {
         ...prevState.errors,
         ...errors,
       },
-    }));
-  };
+    }))
+  }
 
   const updateFormValidity = isValid => {
-    setFormValid(isValid);
-  };
+    setFormValid(isValid)
+  }
 
   const changeActiveTab = tabName => {
-    setActiveTab(tabName);
-  };
+    setActiveTab(tabName)
+  }
 
   return (
     <FormContext.Provider
@@ -84,7 +85,7 @@ const FormProvider = ({ children }) => {
     >
       {children}
     </FormContext.Provider>
-  );
-};
+  )
+}
 
-export { FormContext, FormProvider };
+export {FormContext, FormProvider}
