@@ -3,8 +3,8 @@ import Cookies from 'js-cookie'
 import './index.css'
 
 const Header = props => {
-  const {history} = props
   const onClickLogout = () => {
+    const {history} = props
     Cookies.remove('jwt_token')
     history.replace('/login')
   }
@@ -37,4 +37,5 @@ const Header = props => {
     </nav>
   )
 }
+
 export default withRouter(Header)

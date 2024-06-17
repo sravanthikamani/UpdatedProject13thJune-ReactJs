@@ -1,19 +1,18 @@
 import React, {useContext} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useHistory, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import ContextValue from '../../context/ContextValue'
 import {FormContext} from '../../FormContext'
 import Footer from '../Footer'
 import './index.css'
 
 const MyTrips = () => {
   const jwtToken = Cookies.get('jwt_token')
+  const history = useHistory()
+  const {trips} = useContext(FormContext)
+
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
-
-  const history = useHistory()
-  const {trips} = useContext(FormContext)
 
   const onClickLogout = () => {
     Cookies.remove('jwt_token')

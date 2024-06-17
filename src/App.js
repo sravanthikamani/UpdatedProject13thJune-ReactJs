@@ -1,5 +1,9 @@
-import {Redirect} from 'react-router-dom'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -93,7 +97,7 @@ class App extends Component {
             />
             <ProtectedRoute exact path="/awesome" component={Awesome} />
             <Route path="/not-found" component={NotFound} />
-            <Redirect to="not-found" />
+            <Redirect to="/not-found" />
           </Switch>
         </Router>
       </FormProvider>

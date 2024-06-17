@@ -1,101 +1,96 @@
 import {Link} from 'react-router-dom'
-import ContextValue from '../../context/ContextValue'
+import {useContext} from 'react'
+import {FaCheckCircle} from 'react-icons/fa'
+import {FormContext} from '../../FormContext'
 import './index.css'
 
-const SideBar = () => (
-  <ContextValue>
-    {value => {
-      const {isNumberColored, changeActiveTab} = value
+const stepsList = [
+  {stepId: 'YOUR_DETAILS', displayText: 'Your Details'},
+  {stepId: 'DATE_SELECTION', displayText: 'Date Selection'},
+  {stepId: 'GUESTS', displayText: 'Guests'},
+  {stepId: 'TRAVEL_ASSISTANCE', displayText: 'Travel Assistance'},
+  {stepId: 'CONFIRMATION', displayText: 'Confirmation'},
+]
 
-      const blueColoredNumber = isNumberColored
-        ? 'number-text'
-        : 'number-text-blue'
-      const blueColoredText = isNumberColored
-        ? 'your-head-text'
-        : 'your-head-text-blue'
+const SideBar = () => {
+  const {formData, activeTab, changeActiveTab} = useContext(FormContext)
 
-      const changeTabYourDetails = () => {
-        changeActiveTab('Your Details')
-      }
+  const isCompleted = step => {
+    switch (step) {
+      case 'Your Details':
+        return formData.name && formData.startLocation && formData.endLocation
+      case 'Date Selection':
+        return formData.startDate && formData.endDate
+      case 'Guests':
+        return formData.totalGuests > 1 // Ensure initial state is not completed
+      case 'Travel Assistance':
+        return formData.isTravelAssistanceNeeded // Ensure initial state is not completed
+      case 'Confirmation':
+        return (
+          formData.name &&
+          formData.startLocation &&
+          formData.endLocation &&
+          formData.startDate &&
+          formData.endDate &&
+          formData.totalGuests > 1 &&
+          formData.isTravelAssistanceNeeded
+        )
+      default:
+        return false
+    }
+  }
 
-      const changeTabDateSelection = () => {
-        changeActiveTab('Date Selection')
-      }
+  const getClassNames = step => {
+    const isActive = activeTab === step.displayText
+    const isComplete = isCompleted(step.displayText)
+    let classNames = 'your-details-text'
 
-      const changeTabGuests = () => {
-        changeActiveTab('Guests')
-      }
+    if (isActive) {
+      classNames += ' active-tab'
+    }
 
-      const changeTabTravelAssistance = () => {
-        changeActiveTab('Travel Assistance')
-      }
-      const changeTabConfirmation = () => {
-        changeActiveTab('Confirmation')
-      }
+    if (isComplete) {
+      classNames += ' complete-step'
+    }
 
-      return (
-        <div className="sidebar-container">
-          <div className="white-container">
-            <ul className="menu-list">
-              <Link to="/your-details" className="link-item-details">
-                <li
-                  className="your-details-text"
-                  key="yourDetails"
-                  onClick={changeTabYourDetails}
+    return classNames
+  }
+
+  return (
+    <div className="sidebar-container">
+      <div className="white-container">
+        <ul className="menu-list">
+          {stepsList.map((step, index) => (
+            <Link
+              to={`/${step.stepId.toLowerCase().replace('_', '-')}`}
+              className="link-item-details"
+              key={step.stepId}
+            >
+              <li
+                className={getClassNames(step)}
+                onClick={() => changeActiveTab(step.displayText)}
+              >
+                <p
+                  className={
+                    isCompleted(step.displayText)
+                      ? 'number-text complete'
+                      : 'number-text'
+                  }
                 >
-                  <p className={blueColoredNumber}>1</p>
-                  <p className={blueColoredText}>Your Details</p>
-                </li>
-              </Link>
-
-              <Link to="/date-selection" className="link-item-details">
-                <li
-                  className="your-details-text"
-                  key="dateSelection"
-                  onClick={changeTabDateSelection}
-                >
-                  <p className={blueColoredNumber}>2</p>
-                  <p className={blueColoredText}>Date Selection</p>
-                </li>
-              </Link>
-
-              <Link to="/guests" className="link-item-details">
-                <li
-                  className="your-details-text"
-                  key="guests"
-                  onClick={changeTabGuests}
-                >
-                  <p className={blueColoredNumber}>3</p>
-                  <p className={blueColoredText}>Guests</p>
-                </li>
-              </Link>
-              <Link to="/travel-assistance" className="link-item-details">
-                <li
-                  className="your-details-text"
-                  key="travelAssistance"
-                  onClick={changeTabTravelAssistance}
-                >
-                  <p className={blueColoredNumber}>4</p>
-                  <p className={blueColoredText}>Travel Assistance</p>
-                </li>
-              </Link>
-
-              <Link to="/confirmation" className="link-item-details">
-                <li
-                  className="your-details-text"
-                  key="confirmation"
-                  onClick={changeTabConfirmation}
-                >
-                  <p className={blueColoredNumber}>5</p>
-                  <p className={blueColoredText}>Confirmation</p>
-                </li>
-              </Link>
-            </ul>
-          </div>
-        </div>
-      )
-    }}
-  </ContextValue>
-)
+                  {isCompleted(step.displayText) ? (
+                    <FaCheckCircle />
+                  ) : (
+                    index + 1
+                  )}
+                </p>
+                <p className="your-head-text">{step.displayText}</p>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
 export default SideBar

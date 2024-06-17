@@ -80,9 +80,22 @@
   padding-top: 8px;
   padding-left: 14px;
 }
-/* Add these styles to your CSS file */
+
 .your-details-text.active-tab {
-  color: #ffffff; /* Change to your desired text color for active tab */
-  background-color: #007bff; /* Change to your desired background color for active tab */
+  color: #ffffff;
+  background-color: #007bff;
 }
 
+.complete-step .number-text {
+  color: green;
+  border-color: green;
+}
+
+.number-text.complete {
+  background-color: green;
+  color: white;
+}
+
+.complete-step .your-head-text {
+  color: green;
+}

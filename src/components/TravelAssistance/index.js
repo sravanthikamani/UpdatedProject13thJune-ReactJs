@@ -9,9 +9,10 @@ class TravelAssistance extends Component {
   constructor(props) {
     super(props)
     this.travelAssistanceList = [
-      {value: 'Flight', displayText: 'Flight'},
-      {value: 'Bus', displayText: 'Bus'},
-      {value: 'Train', displayText: 'Train'},
+      {value: 'car', displayText: 'Car'},
+      {value: 'flight', displayText: 'Flight'},
+      {value: 'bus', displayText: 'Bus'},
+      {value: 'train', displayText: 'Train'},
     ]
   }
 
@@ -22,7 +23,7 @@ class TravelAssistance extends Component {
 
   handleSelectChange = event => {
     const {updateFormData} = this.context
-    const selectedValue = event.target.value.toLowerCase()
+    const selectedValue = event.target.value
     updateFormData('travelAssistanceType', selectedValue)
   }
 
@@ -67,7 +68,7 @@ class TravelAssistance extends Component {
                       className="label-checkbox"
                       htmlFor="travelAssistance"
                     >
-                      Travel Assistance
+                      Travel Assistance Needed
                     </label>
                   </div>
                   {isTravelAssistanceNeeded && (
@@ -84,9 +85,12 @@ class TravelAssistance extends Component {
                         onChange={this.handleSelectChange}
                         className="select-section"
                       >
-                        <option value="Car">Car</option>
-                        {this.travelAssistanceList.map(option => (
-                          <option key={option.value} value={option.value}>
+                        {this.travelAssistanceList.map((option, index) => (
+                          <option
+                            key={option.value}
+                            value={option.value}
+                            selected={index === 0}
+                          >
                             {option.displayText}
                           </option>
                         ))}

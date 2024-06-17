@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react'
+import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -13,11 +13,6 @@ class Guests extends Component {
     updateFormData('guests', guests)
   }
 
-  getTotalGuestsCount = () => {
-    const {adults, children, infants} = this.state
-    return adults + children + infants
-  }
-
   handleDecrement = type => {
     const {formData, updateFormData} = this.context
     const guests = {...formData.guests}
@@ -27,7 +22,6 @@ class Guests extends Component {
 
   handleNextClick = () => {
     const {history} = this.props
-    console.log('History props:', history)
     history.replace('/travel-assistance')
   }
 
@@ -41,9 +35,6 @@ class Guests extends Component {
     const {adults, infants, children} = formData.guests
     const {totalGuests} = formData
 
-    // Log the text content of the Adults paragraph
-
-    console.log('Adults text content:', adults)
     return (
       <>
         <Header />
@@ -141,27 +132,21 @@ class Guests extends Component {
                       +
                     </button>
                   </div>
-
-                  <p className="total-guests">
-                    Total Count of the Guests : {totalGuests}
-                  </p>
                   <div className="guests-container">
                     <button
-                      className="guests-previous-button"
+                      className="guest-previous-button"
                       type="button"
                       onClick={this.handlePreviousClick}
                     >
                       Previous
                     </button>
-                    <div className="guests-previous">
-                      <button
-                        className="guests-next-button"
-                        type="button"
-                        onClick={this.handleNextClick}
-                      >
-                        Next
-                      </button>
-                    </div>
+                    <button
+                      className="guest-next-button"
+                      type="button"
+                      onClick={this.handleNextClick}
+                    >
+                      Next
+                    </button>
                   </div>
                 </div>
               </form>
@@ -172,6 +157,7 @@ class Guests extends Component {
     )
   }
 }
+
 Guests.contextType = FormContext
 
 export default withRouter(Guests)

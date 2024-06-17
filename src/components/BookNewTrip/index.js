@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 import YourDetails from '../YourDetails'
 
 const BookNewTrip = () => {
