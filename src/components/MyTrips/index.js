@@ -10,8 +10,6 @@ const MyTrips = () => {
   const history = useHistory()
   const {trips} = useContext(FormContext)
 
-  console.log('Trips data:', trips)
-
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
@@ -53,20 +51,22 @@ const MyTrips = () => {
         <div>
           <h1 className="mytrips-heading">My Trips</h1>
           <ul>
-            {trips.map(trip => {
-              console.log('Rendering trip:', trip)
-              return (
-                <li key={trip.id} className="trip-item">
-                  <div className="list-container">
-                    <h2 className="trip-destination">{trip.endLocation}</h2>
+            {trips.map(trip => (
+              <li key={trip.id} className="trip-item">
+                <div className="list-container">
+                  <p className="trip-destination">{trip.endLocation}</p>
+                  <div className="date-style">
+                    <p className="date-name">Date</p>
                     <p className="trip-dates">
                       {trip.startDate} to {trip.endDate}
                     </p>
+                  </div>
+                  <div>
                     <button className="cancel-trip-button">Cancel</button>
                   </div>
-                </li>
-              )
-            })}
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       ) : (

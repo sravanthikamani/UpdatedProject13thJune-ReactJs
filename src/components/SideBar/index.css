@@ -81,9 +81,8 @@
   padding-left: 14px;
 }
 
-.your-details-text.active-tab {
-  color: #ffffff;
-  background-color: #007bff;
+.your-details-text.active-tab .your-head-text {
+  color: #3b82f6;
 }
 
 .complete-step .number-text {
@@ -92,10 +91,15 @@
 }
 
 .number-text.complete {
-  background-color: green;
   color: white;
 }
 
 .complete-step .your-head-text {
   color: green;
+}
+
+.completion-image {
+  width: 32px;
+  height: 32px;
+  gap: 0px;
 }

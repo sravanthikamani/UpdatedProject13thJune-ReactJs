@@ -214,13 +214,95 @@
   border: 1px 0px 0px 0px;
   opacity: 0px;
   border: 1px solid #3047665e;
+  list-style-type: none;
 }
 .list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
+  height: 140px;
+  top: 189px;
+  left: 162px;
+  gap: 0px;
+  border-radius: 16px ;
+  border: 1px ;
+  opacity: 0px;
+  margin: 10px;
+
+  align-items: center;
+}
+
+/*.list {
+  display: flex;
+  flex-direction: row;
   width: Fixed (882px) px;
   height: Hug (60px) px;
   top: 229px;
   left: 242px;
   gap: 0px;
-  justify: space-between;
+  justify-content: space-between;
   opacity: 0px;
+  align-items: center;
+}*/
+.trip-destination {
+  width: 122px;
+  height: 32px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+  color: #334155;
+}
+.date-style {
+  width: 210px;
+  height: 60px;
+  gap: 0px;
+  opacity: 0px;
+}
+.date-name {
+  width: 32px;
+  height: 20px;
+  left: 365px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  color: #334155cc;
+}
+
+.trip-dates {
+  width: 210px;
+  height: 24px;
+  top: 36px;
+  left: 365px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  color: #0f0f0fcc;
+}
+.cancel-trip-button {
+  width: Fixed (64px) px;
+  height: Hug (28px) px;
+  padding: 6px 24px 6px 20px;
+
+  gap: 10px;
+  border-radius: 6px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  background: #ffffff;
+  border: 1px solid #2563eb;
 }

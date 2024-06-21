@@ -1,3 +1,4 @@
+// Guests Component
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
@@ -22,18 +23,21 @@ class Guests extends Component {
 
   handleNextClick = () => {
     const {history} = this.props
+    const {changeActiveTab} = this.context
+    changeActiveTab('Travel Assistance')
     history.replace('/travel-assistance')
   }
 
   handlePreviousClick = () => {
     const {history} = this.props
+    const {changeActiveTab} = this.context
+    changeActiveTab('Date Selection')
     history.replace('/date-selection')
   }
 
   render() {
     const {formData} = this.context
     const {adults, infants, child} = formData.guests
-    const {totalGuests} = formData
 
     return (
       <>
@@ -44,10 +48,7 @@ class Guests extends Component {
             <div className="guests-right-section">
               <h1 className="guests-heading">Guests</h1>
               <p className="guests-paragraph">Select your guests</p>
-              <form
-                className="form-details-guests"
-                onSubmit={this.submitFormGuests}
-              >
+              <form className="form-details-guests">
                 <div className="guests-form">
                   <div className="guest-input-container">
                     <p className="guests-adults">Adults</p>

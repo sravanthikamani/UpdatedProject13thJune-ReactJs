@@ -1,3 +1,4 @@
+// Sidebar Component
 import {Link} from 'react-router-dom'
 import {useContext} from 'react'
 import {FormContext} from '../../FormContext'
@@ -55,6 +56,30 @@ const SideBar = () => {
     return classNames
   }
 
+  const getNumberClassNames = step => {
+    const isActive = activeTab === step.displayText
+    const isComplete = isCompleted(step.displayText)
+    if (isComplete) {
+      return 'number-text complete'
+    }
+    if (isActive) {
+      return 'number-text-blue'
+    }
+    return 'number-text'
+  }
+
+  const getTextClassNames = step => {
+    const isActive = activeTab === step.displayText
+    const isComplete = isCompleted(step.displayText)
+    if (isComplete) {
+      return 'your-head-text complete-step'
+    }
+    if (isActive) {
+      return 'your-head-text-blue'
+    }
+    return 'your-head-text'
+  }
+
   return (
     <div className="sidebar-container">
       <div className="white-container">
@@ -69,24 +94,18 @@ const SideBar = () => {
                 className={getClassNames(step)}
                 onClick={() => changeActiveTab(step.displayText)}
               >
-                <p
-                  className={
-                    isCompleted(step.displayText)
-                      ? 'number-text complete'
-                      : 'number-text'
-                  }
-                >
+                <p className={getNumberClassNames(step)}>
                   {isCompleted(step.displayText) ? (
                     <img
                       src="https://assets.ccbp.in/frontend/react-js/travel-trip-steps-successfully-completed-img.png"
-                      alt="completed"
+                      alt={step.displayText}
                       className="completion-image"
                     />
                   ) : (
                     index + 1
                   )}
                 </p>
-                <p className="your-head-text">{step.displayText}</p>
+                <p className={getTextClassNames(step)}>{step.displayText}</p>
               </li>
             </Link>
           ))}

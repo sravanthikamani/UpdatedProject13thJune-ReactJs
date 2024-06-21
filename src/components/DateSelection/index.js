@@ -1,54 +1,54 @@
-import React, { useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { FormContext } from '../../FormContext';
-import SideBar from '../SideBar';
-import Header from '../Header';
-import './index.css';
+import React, {useContext} from 'react'
+import {useHistory, Link} from 'react-router-dom'
+import {FormContext} from '../../FormContext'
+import SideBar from '../SideBar'
+import Header from '../Header'
+import './index.css'
 
 const DateSelection = () => {
-  const { formData, updateFormData, updateFormErrors } = useContext(FormContext);
-  const { startDate, endDate, errors = {} } = formData;
-  const history = useHistory();
+  const {formData, updateFormData, updateFormErrors} = useContext(FormContext)
+  const {startDate, endDate, errors = {}} = formData
+  const history = useHistory()
 
   const handleChangeStartDate = event => {
-    updateFormData('startDate', event.target.value);
+    updateFormData('startDate', event.target.value)
     if (event.target.value) {
-      updateFormErrors({ startDate: '' }); // Clear error if start date is selected
+      updateFormErrors({startDate: ''}) // Clear error if start date is selected
     }
-  };
+  }
 
   const handleChangeEndDate = event => {
-    const newEndDate = event.target.value; // Use a different variable name to avoid shadowing
+    const newEndDate = event.target.value // Use a different variable name to avoid shadowing
 
     if (!startDate) {
-      updateFormErrors({ startDate: 'Select start date' });
+      updateFormErrors({startDate: 'Select start date'})
     } else if (!newEndDate) {
-      updateFormErrors({ endDate: 'Select the end date' });
+      updateFormErrors({endDate: 'Select the end date'})
     } else if (new Date(newEndDate) < new Date(startDate)) {
-      updateFormErrors({ endDate: 'The end date cannot be less than Start Date' });
+      updateFormErrors({endDate: 'The end date cannot be less than Start Date'})
     } else {
-      updateFormData('endDate', newEndDate);
-      updateFormErrors({ endDate: '' });
+      updateFormData('endDate', newEndDate)
+      updateFormErrors({endDate: ''})
     }
-  };
+  }
 
   const handleNext = () => {
-    const newErrors = {}; // Use a different variable name to avoid shadowing
+    const newErrors = {} // Use a different variable name to avoid shadowing
 
     if (!startDate) {
-      newErrors.startDate = 'Select start date';
+      newErrors.startDate = 'Select start date'
     } else if (!endDate) {
-      newErrors.endDate = 'Select the end date';
+      newErrors.endDate = 'Select the end date'
     } else if (new Date(endDate) < new Date(startDate)) {
-      newErrors.endDate = 'The end date cannot be less than Start Date';
+      newErrors.endDate = 'The end date cannot be less than Start Date'
     }
 
-    updateFormErrors(newErrors);
+    updateFormErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      history.push('/guests');
+      history.push('/guests')
     }
-  };
+  }
 
   return (
     <>
@@ -128,7 +128,7 @@ const DateSelection = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default DateSelection;
+export default DateSelection
