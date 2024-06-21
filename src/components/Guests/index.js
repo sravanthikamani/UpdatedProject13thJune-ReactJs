@@ -32,7 +32,7 @@ class Guests extends Component {
 
   render() {
     const {formData} = this.context
-    const {adults, infants, children} = formData.guests
+    const {adults, infants, child} = formData.guests
     const {totalGuests} = formData
 
     return (
@@ -85,21 +85,21 @@ class Guests extends Component {
                     <button
                       className="decrease"
                       type="button"
-                      onClick={() => this.handleDecrement('children')}
+                      onClick={() => this.handleDecrement('child')}
                     >
                       -
                     </button>
                     <p
                       className="adults-number"
-                      name="children"
+                      name="child"
                       data-testid="count-children"
                     >
-                      {children}
+                      {child}
                     </p>
                     <button
                       className="increase"
                       type="button"
-                      onClick={() => this.handleIncrement('children')}
+                      onClick={() => this.handleIncrement('child')}
                     >
                       +
                     </button>

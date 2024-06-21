@@ -11,7 +11,7 @@ const FormProvider = ({children}) => {
     endDate: '',
     guests: {
       adults: 1,
-      children: 0,
+      child: 0,
       infants: 0,
     },
     isTravelAssistanceNeeded: false,
@@ -29,8 +29,8 @@ const FormProvider = ({children}) => {
   }
 
   const updateTotalGuests = guests => {
-    const {adults, children, infants} = guests
-    const totalGuests = adults + children + infants
+    const {adults, child, infants} = guests
+    const totalGuests = adults + child + infants
     setFormData(prevState => ({
       ...prevState,
       totalGuests,

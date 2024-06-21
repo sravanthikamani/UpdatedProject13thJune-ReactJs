@@ -10,6 +10,8 @@ const MyTrips = () => {
   const history = useHistory()
   const {trips} = useContext(FormContext)
 
+  console.log('Trips data:', trips)
+
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
@@ -51,17 +53,20 @@ const MyTrips = () => {
         <div>
           <h1 className="mytrips-heading">My Trips</h1>
           <ul>
-            {trips.map(trip => (
-              <li key={trip.id} className="trip-item">
-                <div className="list-container">
-                  <h2 className="trip-destination">{trip.name}</h2>
-                  <p className="trip-dates">
-                    {trip.startDate} to {trip.endDate}
-                  </p>
-                  <button className="cancel-trip-button">Cancel</button>
-                </div>
-              </li>
-            ))}
+            {trips.map(trip => {
+              console.log('Rendering trip:', trip)
+              return (
+                <li key={trip.id} className="trip-item">
+                  <div className="list-container">
+                    <h2 className="trip-destination">{trip.endLocation}</h2>
+                    <p className="trip-dates">
+                      {trip.startDate} to {trip.endDate}
+                    </p>
+                    <button className="cancel-trip-button">Cancel</button>
+                  </div>
+                </li>
+              )
+            })}
           </ul>
         </div>
       ) : (
@@ -74,9 +79,6 @@ const MyTrips = () => {
           <h1 className="no-upcoming-heading">No upcoming trips.</h1>
           <h1 className="no-upcoming-description">
             When you book a trip, you will see your trip details here.
-          </h1>
-          <h1 className="no-upcoming-mobile">
-            When you book a trip, you will <br /> see your trip details here.
           </h1>
           <Link to="/book-a-new-trip">
             <button type="button" className="no-upcoming-button">

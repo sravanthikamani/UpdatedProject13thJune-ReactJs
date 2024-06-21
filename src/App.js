@@ -52,6 +52,7 @@ class App extends Component {
     this.setState({[name]: value})
     console.log('inHandleInput:', {name: value})
   }
+
   render() {
     return (
       <FormProvider>

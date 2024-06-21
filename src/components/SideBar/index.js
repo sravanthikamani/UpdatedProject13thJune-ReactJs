@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom'
 import {useContext} from 'react'
-import {FaCheckCircle} from 'react-icons/fa'
 import {FormContext} from '../../FormContext'
 import './index.css'
 
@@ -78,7 +77,11 @@ const SideBar = () => {
                   }
                 >
                   {isCompleted(step.displayText) ? (
-                    <FaCheckCircle />
+                    <img
+                      src="https://assets.ccbp.in/frontend/react-js/travel-trip-steps-successfully-completed-img.png"
+                      alt="completed"
+                      className="completion-image"
+                    />
                   ) : (
                     index + 1
                   )}

@@ -42,15 +42,16 @@
 
 .form-details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .your-details-form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
   width: 448px;
   height: 366px;
@@ -65,7 +66,7 @@
   padding-left: 40px;
   padding-top: 26px;
   padding-bottom: 4px;
-  position: relative; 
+  position: relative;
 }
 
 .label-name {

@@ -15,21 +15,18 @@ const Header = props => {
         <Link to="/" className="travel-heading">
           Travel Trip
         </Link>
-
         <ul className="nav-menu">
           <li className="nav-menu-item">
             <Link to="/" className="nav-link">
               Home
             </Link>
           </li>
-
           <li className="nav-menu-item">
             <Link to="/my-trips" className="nav-link">
               My Trips
             </Link>
           </li>
         </ul>
-
         <button type="button" className="logout-button" onClick={onClickLogout}>
           Logout
         </button>
