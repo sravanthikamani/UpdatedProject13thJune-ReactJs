@@ -6,25 +6,16 @@ import Header from '../Header'
 import './index.css'
 
 const Confirmation = () => {
-  const {formData, addTrip, updateFormData, changeActiveTab} =
+  const {formData, addTrip, resetFormData, changeActiveTab} =
     useContext(FormContext)
   const history = useHistory()
   const handleCancel = () => {
     // Clear form data
-
-    updateFormData({
-      name: '',
-      startLocation: '',
-      endLocation: '',
-      startDate: '',
-      endDate: '',
-      totalGuests: 1,
-      isTravelAssistanceNeeded: false,
-      travelAssistanceType: '',
-    })
+    resetFormData();
     // Change active tab to 'Your Details'
-    changeActiveTab('Your Details')
-  }
+    changeActiveTab('Your Details');
+    history.push('/your-details');
+  };
   const {
     name,
     startLocation,

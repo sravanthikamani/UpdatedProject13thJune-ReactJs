@@ -1,55 +1,57 @@
-import React, {createContext, useState} from 'react'
+import React, { createContext, useState } from 'react';
 
-const FormContext = createContext()
+const FormContext = createContext();
 
-const FormProvider = ({children}) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    startLocation: '',
-    endLocation: '',
-    startDate: '',
-    endDate: '',
-    guests: {
-      adults: 1,
-      child: 0,
-      infants: 0,
-    },
-    isTravelAssistanceNeeded: false,
-    travelAssistanceType: '',
-    totalGuests: 1, // Initialize with 1 adult as per the default guests state
-    errors: {}, // Initialize errors in the initial state
-  })
+const initialFormData = {
+  name: '',
+  startLocation: '',
+  endLocation: '',
+  startDate: '',
+  endDate: '',
+  guests: {
+    adults: 1,
+    child: 0,
+    infants: 0,
+  },
+  isTravelAssistanceNeeded: false,
+  travelAssistanceType: '',
+  totalGuests: 1,
+  errors: {},
+};
 
-  const [trips, setTrips] = useState([])
-  const [formValid, setFormValid] = useState(false)
-  const [activeTab, setActiveTab] = useState('Your Details')
+const FormProvider = ({ children }) => {
+  const [formData, setFormData] = useState(initialFormData);
+  const [trips, setTrips] = useState([]);
+  const [formValid, setFormValid] = useState(false);
+  const [activeTab, setActiveTab] = useState('Your Details');
 
   const addTrip = trip => {
-    setTrips(prevTrips => [...prevTrips, trip])
-  }
+    setTrips(prevTrips => [...prevTrips, trip]);
+  };
 
   const updateTotalGuests = guests => {
-    const {adults, child, infants} = guests
-    const totalGuests = adults + child + infants
+    const { adults, child, infants } = guests;
+    const totalGuests = adults + child + infants;
     setFormData(prevState => ({
       ...prevState,
+      guests,
       totalGuests,
-    }))
-  }
+    }));
+  };
 
   const updateFormData = (key, value) => {
     setFormData(prevState => {
       const newFormData = {
         ...prevState,
         [key]: value,
-      }
+      };
       if (key === 'guests') {
-        updateTotalGuests(value)
+        updateTotalGuests(value);
       }
-      console.log('Updated formData:', newFormData) // Log updated formData
-      return newFormData
-    })
-  }
+      console.log('Updated formData:', newFormData); // Log updated formData
+      return newFormData;
+    });
+  };
 
   const updateFormErrors = errors => {
     setFormData(prevState => ({
@@ -58,16 +60,20 @@ const FormProvider = ({children}) => {
         ...prevState.errors,
         ...errors,
       },
-    }))
-  }
+    }));
+  };
 
   const updateFormValidity = isValid => {
-    setFormValid(isValid)
-  }
+    setFormValid(isValid);
+  };
 
   const changeActiveTab = tabName => {
-    setActiveTab(tabName)
-  }
+    setActiveTab(tabName);
+  };
+
+  const resetFormData = () => {
+    setFormData(initialFormData);
+  };
 
   return (
     <FormContext.Provider
@@ -80,12 +86,13 @@ const FormProvider = ({children}) => {
         updateFormValidity,
         activeTab,
         changeActiveTab,
+        resetFormData,
         isFormValid: formValid,
       }}
     >
       {children}
     </FormContext.Provider>
-  )
-}
+  );
+};
 
-export {FormContext, FormProvider}
+export { FormContext, FormProvider };
