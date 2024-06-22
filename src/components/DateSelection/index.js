@@ -6,7 +6,8 @@ import Header from '../Header'
 import './index.css'
 
 const DateSelection = () => {
-  const {formData, updateFormData, updateFormErrors} = useContext(FormContext)
+  const {formData, updateFormData, updateFormErrors, setActiveStep} =
+    useContext(FormContext)
   const {startDate, endDate, errors = {}} = formData
   const history = useHistory()
 
@@ -23,9 +24,11 @@ const DateSelection = () => {
     if (!startDate) {
       updateFormErrors({startDate: 'Select start date'})
     } else if (!newEndDate) {
-      updateFormErrors({endDate: 'Select the end date'})
+      updateFormErrors({endDate: 'Select end date'})
     } else if (new Date(newEndDate) < new Date(startDate)) {
-      updateFormErrors({endDate: 'The end date cannot be less than Start Date'})
+      updateFormErrors({
+        endDate: 'The end date cannot be less than the start date',
+      })
     } else {
       updateFormData('endDate', newEndDate)
       updateFormErrors({endDate: ''})
@@ -38,9 +41,9 @@ const DateSelection = () => {
     if (!startDate) {
       newErrors.startDate = 'Select start date'
     } else if (!endDate) {
-      newErrors.endDate = 'Select the end date'
+      newErrors.endDate = 'Select end date'
     } else if (new Date(endDate) < new Date(startDate)) {
-      newErrors.endDate = 'The end date cannot be less than Start Date'
+      newErrors.endDate = 'The end date cannot be less than the start date'
     }
 
     updateFormErrors(newErrors)
@@ -49,7 +52,9 @@ const DateSelection = () => {
       history.push('/guests')
     }
   }
-
+  const handlePrevious = () => {
+    setActiveStep('Your Details') // Set active step to 'Your Details' when 'Previous' is clicked
+  }
   return (
     <>
       <Header />
@@ -108,6 +113,7 @@ const DateSelection = () => {
                     <button
                       type="button"
                       className="dateselection-previous-button"
+                      onClick={handlePrevious}
                     >
                       Previous
                     </button>
