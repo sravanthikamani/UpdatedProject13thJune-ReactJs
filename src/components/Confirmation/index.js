@@ -6,8 +6,25 @@ import Header from '../Header'
 import './index.css'
 
 const Confirmation = () => {
-  const {formData, addTrip} = useContext(FormContext)
+  const {formData, addTrip, updateFormData, changeActiveTab} =
+    useContext(FormContext)
   const history = useHistory()
+  const handleCancel = () => {
+    // Clear form data
+
+    updateFormData({
+      name: '',
+      startLocation: '',
+      endLocation: '',
+      startDate: '',
+      endDate: '',
+      totalGuests: 1,
+      isTravelAssistanceNeeded: false,
+      travelAssistanceType: '',
+    })
+    // Change active tab to 'Your Details'
+    changeActiveTab('Your Details')
+  }
   const {
     name,
     startLocation,
@@ -98,6 +115,7 @@ const Confirmation = () => {
                       type="button"
                       className="confirmation-cancel-button"
                       data-testid="cancel-button"
+                      onClick={handleCancel}
                     >
                       Cancel
                     </button>

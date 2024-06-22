@@ -1,5 +1,5 @@
 import React, {Component, useContext} from 'react'
-import {Link} from 'react-router-dom'
+import {withRouter,Link} from 'react-router-dom'
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -14,24 +14,24 @@ class YourDetails extends Component {
     updateFormData(name, value)
     updateFormErrors({[name]: ''})
   }
-  handleNext = () => {
+  handleNext = e => {
+    e.preventDefault();
     const {formData, updateFormData, changeActiveTab} = this.context
     const {name, startLocation, endLocation} = formData
     console.log('Form data on next:', formData) // Log formData on next button click
     const errors = {}
     if (!name.trim()) {
       errors.name = 'Enter your name'
-    }
-    if (!startLocation.trim()) {
+    } else if (!startLocation.trim()) {
       errors.startLocation = 'Enter your start location'
-    }
-    if (!endLocation.trim()) {
+    } else if (!endLocation.trim()) {
       errors.endLocation = 'Enter your end location'
     }
     updateFormData('errors', errors)
     if (Object.keys(errors).length === 0) {
       console.log('Proceeding to next step')
       changeActiveTab('Date Selection')
+      this.props.history.push('/date-selection'); 
     }
   }
 
@@ -126,7 +126,7 @@ class YourDetails extends Component {
                   <div className="next-button-container">
                     <Link to="/date-selection">
                       <button
-                        type="button"
+                        type="submit"
                         className="your-next-button"
                         onClick={this.handleNext}
                       >
@@ -146,4 +146,4 @@ class YourDetails extends Component {
 
 YourDetails.contextType = FormContext
 
-export default YourDetails
+export default withRouter(YourDetails);

@@ -102,4 +102,8 @@
   width: 32px;
   height: 32px;
   gap: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
 }

@@ -1,4 +1,3 @@
-// Sidebar Component
 import {Link} from 'react-router-dom'
 import {useContext} from 'react'
 import {FormContext} from '../../FormContext'
@@ -22,9 +21,9 @@ const SideBar = () => {
       case 'Date Selection':
         return formData.startDate && formData.endDate
       case 'Guests':
-        return formData.totalGuests > 1 // Ensure initial state is not completed
+        return formData.totalGuests > 1
       case 'Travel Assistance':
-        return formData.isTravelAssistanceNeeded // Ensure initial state is not completed
+        return formData.isTravelAssistanceNeeded
       case 'Confirmation':
         return (
           formData.name &&

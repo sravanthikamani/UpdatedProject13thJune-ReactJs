@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom'
-import {FormContext} from '../../FormContext'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { FormContext } from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
 import './index.css'
@@ -9,37 +9,40 @@ class TravelAssistance extends Component {
   constructor(props) {
     super(props)
     this.travelAssistanceList = [
-      {value: 'car', displayText: 'Car'},
-      {value: 'flight', displayText: 'Flight'},
-      {value: 'bus', displayText: 'Bus'},
-      {value: 'train', displayText: 'Train'},
+      { value: 'car', displayText: 'Car' },
+      { value: 'flight', displayText: 'Flight' },
+      { value: 'bus', displayText: 'Bus' },
+      { value: 'train', displayText: 'Train' },
     ]
   }
 
   handleChange = event => {
-    const {updateFormData} = this.context
+    const { updateFormData } = this.context
     updateFormData('isTravelAssistanceNeeded', event.target.checked)
   }
 
   handleSelectChange = event => {
-    const {updateFormData} = this.context
+    const { updateFormData } = this.context
     const selectedValue = event.target.value
     updateFormData('travelAssistanceType', selectedValue)
   }
 
   handleNextClick = () => {
-    const {history} = this.props
-    history.replace('/confirmation')
+    const { updateFormData, changeActiveTab } = this.context
+    updateFormData('isTravelAssistanceNeeded', true)
+    changeActiveTab('Confirmation')
+    this.props.history.replace('/confirmation')
   }
 
   handlePreviousClick = () => {
-    const {history} = this.props
-    history.replace('/guests')
+    const { changeActiveTab } = this.context
+    changeActiveTab('Guests')
+    this.props.history.replace('/guests')
   }
 
   render() {
-    const {formData} = this.context
-    const {isTravelAssistanceNeeded, travelAssistanceType} = formData
+    const { formData } = this.context
+    const { isTravelAssistanceNeeded, travelAssistanceType } = formData
 
     return (
       <>
@@ -86,11 +89,7 @@ class TravelAssistance extends Component {
                         className="select-section"
                       >
                         {this.travelAssistanceList.map((option, index) => (
-                          <option
-                            key={option.value}
-                            value={option.value}
-                            selected={index === 0}
-                          >
+                          <option key={option.value} value={option.value}>
                             {option.displayText}
                           </option>
                         ))}
