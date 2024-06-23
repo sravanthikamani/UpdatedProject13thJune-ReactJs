@@ -20,20 +20,24 @@ const DateSelection = () => {
 
   const handleChangeEndDate = event => {
     const newEndDate = event.target.value // Use a different variable name to avoid shadowing
-
-    if (!startDate) {
-      updateFormErrors({startDate: 'Select start date'})
+    updateFormData('endDate', event.target.value)
+    if (event.target.value) {
+      updateFormErrors({endDate: ''}) // Clear error if end date is selected
+    }
+  }
+  /* if (!startDate) {
+      updateFormErrors({ startDate: 'Select start date' });
     } else if (!newEndDate) {
-      updateFormErrors({endDate: 'Select end date'})
+      updateFormErrors({ endDate: 'Select end date' });
     } else if (new Date(newEndDate) < new Date(startDate)) {
       updateFormErrors({
         endDate: 'The end date cannot be less than the start date',
-      })
+      });
     } else {
-      updateFormData('endDate', newEndDate)
-      updateFormErrors({endDate: ''})
+      updateFormData('endDate', newEndDate);
+      updateFormErrors({ endDate: '' });
     }
-  }
+  };*/
 
   const handleNext = () => {
     const newErrors = {} // Use a different variable name to avoid shadowing
@@ -52,9 +56,12 @@ const DateSelection = () => {
       history.push('/guests')
     }
   }
+
   const handlePrevious = () => {
     setActiveStep('Your Details') // Set active step to 'Your Details' when 'Previous' is clicked
+    history.push('/your-details') // Navigate to 'Your Details' route
   }
+
   return (
     <>
       <Header />
