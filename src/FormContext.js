@@ -23,8 +23,13 @@ const FormProvider = ({children}) => {
   const [formData, setFormData] = useState(initialFormData)
   const [trips, setTrips] = useState([])
   const [formValid, setFormValid] = useState(false)
-  const [activeTab, setActiveTab] = useState('Your Details')
 
+  const [activeTab, setActiveTab] = useState('Your Details')
+  const [dateSelectionCompleted, setDateSelectionCompleted] = useState(false)
+  const [yourDetailsCompleted, setYourDetailsCompleted] = useState(false)
+  const [guestsCompleted, setGuestsCompleted] = useState(false)
+  const [travelAssistanceCompleted, setTravelAssistanceCompleted] =
+    useState(false)
   const addTrip = trip => {
     setTrips(prevTrips => [...prevTrips, trip])
   }
@@ -73,8 +78,13 @@ const FormProvider = ({children}) => {
 
   const resetFormData = () => {
     setFormData(initialFormData)
+    setDateSelectionCompleted(false)
+    setYourDetailsCompleted(false)
+    setGuestsCompleted(false)
+    setTravelAssistanceCompleted(false)
   }
- const setActiveStep = step => { // Add setActiveStep method
+  const setActiveStep = step => {
+    // Add setActiveStep method
     setActiveTab(step)
   }
   return (
@@ -91,6 +101,14 @@ const FormProvider = ({children}) => {
         resetFormData,
         setActiveStep,
         isFormValid: formValid,
+        dateSelectionCompleted,
+        setDateSelectionCompleted,
+        yourDetailsCompleted,
+        setYourDetailsCompleted,
+        guestsCompleted,
+        setGuestsCompleted,
+        travelAssistanceCompleted,
+        setTravelAssistanceCompleted,
       }}
     >
       {children}

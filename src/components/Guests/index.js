@@ -23,16 +23,18 @@ class Guests extends Component {
 
   handleNextClick = () => {
     const {history} = this.props
-    const {changeActiveTab} = this.context
-    changeActiveTab('Travel Assistance')
-    history.replace('/travel-assistance')
+    const {setActiveStep, setGuestsCompleted} = this.context
+    setGuestsCompleted(true)
+    setActiveStep('Travel Assistance')
+    history.push('/travel-assistance')
   }
 
   handlePreviousClick = () => {
     const {history} = this.props
-    const {changeActiveTab} = this.context
-    changeActiveTab('Date Selection')
-    history.replace('/date-selection')
+    const {setActiveStep, setGuestsCompleted} = this.context
+    setActiveStep('Date Selection')
+    setGuestsCompleted(false)
+    history.push('/date-selection')
   }
 
   render() {

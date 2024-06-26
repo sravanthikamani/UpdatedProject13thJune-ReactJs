@@ -57,7 +57,7 @@
   outline: none;
   cursor: pointer;
 }
-@media screen and (min-width: 767px) {
+/* @media screen and (min-width: 767px) {
   .homepage-mobile-image {
     display: none;
   }
@@ -67,7 +67,7 @@
   .mobile-home-paragraph {
     display: none;
   }
-}
+} */
 
 @media screen and (max-width: 766px) {
   .homepage-image {
@@ -125,4 +125,14 @@
   .book-button {
     font-size: 16px;
   }
+    .homepage-image {
+    display: none;
+  }
+  .home-heading {
+    display: none;
+  }
+  .home-paragraph {
+    display: none;
+  }
 }
+

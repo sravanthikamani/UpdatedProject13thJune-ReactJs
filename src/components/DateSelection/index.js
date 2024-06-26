@@ -6,8 +6,13 @@ import Header from '../Header'
 import './index.css'
 
 const DateSelection = () => {
-  const {formData, updateFormData, updateFormErrors, setActiveStep} =
-    useContext(FormContext)
+  const {
+    formData,
+    updateFormData,
+    updateFormErrors,
+    setActiveStep,
+    setDateSelectionCompleted,
+  } = useContext(FormContext)
   const {startDate, endDate, errors = {}} = formData
   const history = useHistory()
 
@@ -53,13 +58,16 @@ const DateSelection = () => {
     updateFormErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
+      setDateSelectionCompleted(true) // Set Date Selection as completed
+      setActiveStep('Guests')
       history.push('/guests')
     }
   }
 
   const handlePrevious = () => {
-    setActiveStep('Your Details') // Set active step to 'Your Details' when 'Previous' is clicked
-    history.push('/your-details') // Navigate to 'Your Details' route
+    setActiveStep('Your Details')
+    setDateSelectionCompleted(false) // Reset Date Selection completion status
+    history.push('/your-details')
   }
 
   return (

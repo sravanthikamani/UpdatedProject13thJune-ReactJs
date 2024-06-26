@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import { FormContext } from '../../FormContext'
+import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
+import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
 import Header from '../Header'
 import './index.css'
@@ -9,40 +9,43 @@ class TravelAssistance extends Component {
   constructor(props) {
     super(props)
     this.travelAssistanceList = [
-      { value: 'car', displayText: 'Car' },
-      { value: 'flight', displayText: 'Flight' },
-      { value: 'bus', displayText: 'Bus' },
-      { value: 'train', displayText: 'Train' },
+      {value: 'car', displayText: 'Car'},
+      {value: 'flight', displayText: 'Flight'},
+      {value: 'bus', displayText: 'Bus'},
+      {value: 'train', displayText: 'Train'},
     ]
   }
 
   handleChange = event => {
-    const { updateFormData } = this.context
+    const {updateFormData} = this.context
     updateFormData('isTravelAssistanceNeeded', event.target.checked)
   }
 
   handleSelectChange = event => {
-    const { updateFormData } = this.context
+    const {updateFormData} = this.context
     const selectedValue = event.target.value
     updateFormData('travelAssistanceType', selectedValue)
   }
 
   handleNextClick = () => {
-    const { updateFormData, changeActiveTab } = this.context
+    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} =
+      this.context
     updateFormData('isTravelAssistanceNeeded', true)
-    changeActiveTab('Confirmation')
-    this.props.history.replace('/confirmation')
+    setTravelAssistanceCompleted(true)
+    setActiveStep('Confirmation')
+    this.props.history.push('/confirmation')
   }
 
   handlePreviousClick = () => {
-    const { changeActiveTab } = this.context
-    changeActiveTab('Guests')
-    this.props.history.replace('/guests')
+    const {setActiveStep, setTravelAssistanceCompleted} = this.context
+    setActiveStep('Guests')
+    setTravelAssistanceCompleted(false)
+    this.props.history.push('/guests')
   }
 
   render() {
-    const { formData } = this.context
-    const { isTravelAssistanceNeeded, travelAssistanceType } = formData
+    const {formData} = this.context
+    const {isTravelAssistanceNeeded, travelAssistanceType} = formData
 
     return (
       <>

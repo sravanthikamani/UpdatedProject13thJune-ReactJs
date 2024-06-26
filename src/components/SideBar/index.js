@@ -12,27 +12,32 @@ const stepsList = [
 ]
 
 const SideBar = () => {
-  const {formData, activeTab, changeActiveTab} = useContext(FormContext)
+  const {
+    formData,
+    activeTab,
+    changeActiveTab,
+    dateSelectionCompleted,
+    yourDetailsCompleted,
+    guestsCompleted,
+    travelAssistanceCompleted,
+  } = useContext(FormContext)
 
   const isCompleted = step => {
     switch (step) {
       case 'Your Details':
-        return formData.name && formData.startLocation && formData.endLocation
+        return yourDetailsCompleted
       case 'Date Selection':
-        return formData.startDate && formData.endDate
+        return dateSelectionCompleted
       case 'Guests':
-        return formData.totalGuests > 1
+        return guestsCompleted
       case 'Travel Assistance':
-        return formData.isTravelAssistanceNeeded
+        return travelAssistanceCompleted
       case 'Confirmation':
         return (
-          formData.name &&
-          formData.startLocation &&
-          formData.endLocation &&
-          formData.startDate &&
-          formData.endDate &&
-          formData.totalGuests > 1 &&
-          formData.isTravelAssistanceNeeded
+          yourDetailsCompleted &&
+          dateSelectionCompleted &&
+          guestsCompleted &&
+          travelAssistanceCompleted
         )
       default:
         return false

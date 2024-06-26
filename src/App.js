@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <FormProvider>
-        <Router>
+        
           <Switch>
             <Route exact path="/login" component={Login} />
             <ProtectedRoute exact path="/" component={Home} />
@@ -100,7 +100,7 @@ class App extends Component {
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />
           </Switch>
-        </Router>
+        
       </FormProvider>
     )
   }

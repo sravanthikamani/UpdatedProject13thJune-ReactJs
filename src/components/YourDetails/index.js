@@ -16,7 +16,13 @@ class YourDetails extends Component {
   }
   handleNext = e => {
     e.preventDefault()
-    const {formData, updateFormData, changeActiveTab} = this.context
+    const {
+      formData,
+      updateFormData,
+      setActiveStep,
+      setYourDetailsCompleted,
+      updateFormErrors,
+    } = this.context
     const {name, startLocation, endLocation} = formData
     console.log('Form data on next:', formData) // Log formData on next button click
     const errors = {}
@@ -30,9 +36,10 @@ class YourDetails extends Component {
     updateFormData('errors', errors)
     if (Object.keys(errors).length === 0) {
       console.log('Proceeding to next step')
-      changeActiveTab('Date Selection')
+      setYourDetailsCompleted(true)
+      setActiveStep('Date Selection')
       this.props.history.push('/date-selection')
-    }
+    } 
   }
 
   render() {
