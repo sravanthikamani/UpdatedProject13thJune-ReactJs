@@ -13,7 +13,6 @@ const stepsList = [
 
 const SideBar = () => {
   const {
-    formData,
     activeTab,
     changeActiveTab,
     dateSelectionCompleted,
@@ -64,7 +63,7 @@ const SideBar = () => {
     const isActive = activeTab === step.displayText
     const isComplete = isCompleted(step.displayText)
     if (isComplete) {
-      return 'number-text complete'
+      return 'complete'
     }
     if (isActive) {
       return 'number-text-blue'
@@ -76,7 +75,7 @@ const SideBar = () => {
     const isActive = activeTab === step.displayText
     const isComplete = isCompleted(step.displayText)
     if (isComplete) {
-      return 'your-head-text complete-step'
+      return 'complete-step'
     }
     if (isActive) {
       return 'your-head-text-blue'
