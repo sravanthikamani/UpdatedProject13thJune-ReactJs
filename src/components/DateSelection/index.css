@@ -103,7 +103,7 @@
 }
 
 .input-date::placeholder {
-  color:red; /* Default placeholder color */
+  color: red; /* Default placeholder color */
 }
 
 .input-date.error::placeholder {

@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 360px) and (max-width: 800px) {
+/*@media screen and (min-width: 360px) and (max-width: 800px) {
   .nav-header {
     display: none;
   }
@@ -101,6 +101,11 @@
   }
 
   .logout-button {
+    display: none;
+  }
+}*/
+@media screen and (max-width: 766px) {
+  .nav-header {
     display: none;
   }
 }

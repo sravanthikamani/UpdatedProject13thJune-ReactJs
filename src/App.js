@@ -56,51 +56,49 @@ class App extends Component {
   render() {
     return (
       <FormProvider>
-        
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute exact path="/my-trips" component={MyTrips} />
-            <ProtectedRoute
-              exact
-              path="/book-a-new-trip"
-              component={BookNewTrip}
-            />
-            <ProtectedRoute
-              exact
-              path="/your-details"
-              component={YourDetails}
-              handleInputChange={this.handleInputChange}
-            />
-            <ProtectedRoute
-              exact
-              path="/date-selection"
-              component={DateSelection}
-              handleInputChange={this.handleInputChange}
-            />
-            <ProtectedRoute
-              exact
-              path="/guests"
-              component={Guests}
-              handleInputChange={this.handleInputChange}
-            />
-            <ProtectedRoute
-              exact
-              path="/travel-assistance"
-              component={TravelAssistance}
-              handleInputChange={this.handleInputChange}
-            />
-            <ProtectedRoute
-              exact
-              path="/confirmation"
-              component={Confirmation}
-              data={this.state}
-            />
-            <ProtectedRoute exact path="/awesome" component={Awesome} />
-            <Route path="/not-found" component={NotFound} />
-            <Redirect to="/not-found" />
-          </Switch>
-        
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/my-trips" component={MyTrips} />
+          <ProtectedRoute
+            exact
+            path="/book-a-new-trip"
+            component={BookNewTrip}
+          />
+          <ProtectedRoute
+            exact
+            path="/your-details"
+            component={YourDetails}
+            handleInputChange={this.handleInputChange}
+          />
+          <ProtectedRoute
+            exact
+            path="/date-selection"
+            component={DateSelection}
+            handleInputChange={this.handleInputChange}
+          />
+          <ProtectedRoute
+            exact
+            path="/guests"
+            component={Guests}
+            handleInputChange={this.handleInputChange}
+          />
+          <ProtectedRoute
+            exact
+            path="/travel-assistance"
+            component={TravelAssistance}
+            handleInputChange={this.handleInputChange}
+          />
+          <ProtectedRoute
+            exact
+            path="/confirmation"
+            component={Confirmation}
+            data={this.state}
+          />
+          <ProtectedRoute exact path="/awesome" component={Awesome} />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
+        </Switch>
       </FormProvider>
     )
   }

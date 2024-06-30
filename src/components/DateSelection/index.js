@@ -12,6 +12,7 @@ const DateSelection = () => {
     updateFormErrors,
     setActiveStep,
     setDateSelectionCompleted,
+    setYourDetailsCompleted,
   } = useContext(FormContext)
   const {startDate, endDate, errors = {}} = formData
   const history = useHistory()
@@ -64,7 +65,7 @@ const DateSelection = () => {
     }
   }
 
-  const handlePrevious = () => {
+   const handlePrevious = () => {
     setActiveStep('Your Details')
     setDateSelectionCompleted(false) // Reset Date Selection completion status
     history.push('/your-details')

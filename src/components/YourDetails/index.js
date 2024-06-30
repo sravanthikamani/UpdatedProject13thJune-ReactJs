@@ -39,7 +39,7 @@ class YourDetails extends Component {
       setYourDetailsCompleted(true)
       setActiveStep('Date Selection')
       this.props.history.push('/date-selection')
-    } 
+    }
   }
 
   render() {

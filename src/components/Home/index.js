@@ -23,13 +23,11 @@ const Home = () => {
             Travel. Relax. <br />
             Memories.
           </h1>
-          
+
           <p className="home-paragraph">
             With travel trip you can experience new travel and the best tourist
             destinations.
           </p>
-         
-         
 
           <Link to="/book-a-new-trip">
             <button type="button" className="book-button">

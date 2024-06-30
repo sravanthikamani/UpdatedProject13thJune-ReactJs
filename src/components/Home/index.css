@@ -57,19 +57,13 @@
   outline: none;
   cursor: pointer;
 }
-/* @media screen and (min-width: 767px) {
+@media screen and (min-width: 767px) {
   .homepage-mobile-image {
     display: none;
   }
-  .mobile-home-heading {
-    display: none;
-  }
-  .mobile-home-paragraph {
-    display: none;
-  }
-} */
+}
 
-@media screen and (max-width: 766px) {
+/*@media screen and (max-width: 766px) {
   .homepage-image {
     display: none;
   }
@@ -79,7 +73,7 @@
   .home-paragraph {
     display: none;
   }
-}
+}*/
 
 @media screen and (max-width: 766px) {
   .home-background {
@@ -91,11 +85,20 @@
     align-items: center;
     width: 360px;
     margin-top: -72px;
+
+    top: 198px;
+    left: -15556px;
+    gap: 0px;
+    opacity: 0px;
+    background-size: cover;
   }
   .homepage-mobile-image {
     width: 227px;
     height: 312px;
-    margin-top: 0px;
+    top: 72px;
+    left: 66px;
+    gap: 0px;
+    opacity: 0px;
   }
   .home-content {
     display: flex;
@@ -106,33 +109,46 @@
     margin-top: 0px;
   }
 
-  .mobile-home-heading {
-    color: #304766;
-    font-family: 'Roboto';
+  .home-heading {
+    width: 328px;
+    height: 32px;
+    top: 432px;
+    left: 16px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Inter;
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
+    letter-spacing: 0.10000000149011612px;
     text-align: center;
   }
-  .mobile-home-paragraph {
+  .home-paragraph {
     color: #304766;
-    font-family: 'Roboto';
+    width: 328px;
+    height: 64px;
+    top: 496px;
+    left: 16px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
     line-height: 32px;
+    letter-spacing: 0.20000000298023224px;
     text-align: center;
   }
   .book-button {
-    font-size: 16px;
+    width: Hug (175px) px;
+    height: Hug (48px) px;
+    top: 616px;
+    left: 95px;
+    padding: 12px 24px 12px 24px;
+    gap: 8px;
+    border-radius: 8px;
+    opacity: 0px;
   }
-    .homepage-image {
-    display: none;
-  }
-  .home-heading {
-    display: none;
-  }
-  .home-paragraph {
+  .homepage-image {
     display: none;
   }
 }
-

@@ -1,17 +1,21 @@
 .footer-container {
   background-color: #ffffff;
   border-top: 2px solid #cbd5e1;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  width: 360px;
-  height: 73px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
-  position: fixed;
+
   bottom: 0px;
   box-shadow: 0px 7px 32px 0px #0000000d;
+  width: Fixed (360px) px;
+  height: Hug (73px) px;
+  top: 727px;
+  padding: 12px 16px 12px 16px;
+  gap: 10px;
+  border-radius: 12px 12px 0px 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
 }
 
 .footer-items {
@@ -104,38 +108,9 @@
   padding-bottom: 3px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .footer-container {
     display: none;
   }
-  .footer-items {
-    display: none;
-  }
-  .home-link {
-    display: none;
-  }
-  .home-icon {
-    display: none;
-  }
-  .footer-home {
-    display: none;
-  }
-  .mytrip-link {
-    display: none;
-  }
-  .mytrip-icon {
-    display: none;
-  }
-  .footer-mytrip {
-    display: none;
-  }
-  .button-container {
-    display: none;
-  }
-  .logout-icon {
-    display: none;
-  }
-  .logout-btn {
-    display: none;
-  }
+ 
 }
