@@ -10,7 +10,7 @@ class YourDetails extends Component {
   handleChange = e => {
     const {name, value} = e.target
     const {updateFormData, updateFormErrors} = this.context
-    console.log('Input change:', name, value) // Log input changes
+   
     updateFormData(name, value)
     updateFormErrors({[name]: ''})
   }
@@ -24,7 +24,7 @@ class YourDetails extends Component {
       updateFormErrors,
     } = this.context
     const {name, startLocation, endLocation} = formData
-    console.log('Form data on next:', formData) // Log formData on next button click
+    
     const errors = {}
     if (!name.trim()) {
       errors.name = 'Enter your name'
@@ -35,7 +35,7 @@ class YourDetails extends Component {
     }
     updateFormData('errors', errors)
     if (Object.keys(errors).length === 0) {
-      console.log('Proceeding to next step')
+     
       setYourDetailsCompleted(true)
       setActiveStep('Date Selection')
       this.props.history.push('/date-selection')

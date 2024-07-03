@@ -11,11 +11,11 @@ const Confirmation = () => {
   const history = useHistory()
   const handleCancel = () => {
     // Clear form data
-    resetFormData();
+    resetFormData()
     // Change active tab to 'Your Details'
-    changeActiveTab('Your Details');
-    history.push('/your-details');
-  };
+    changeActiveTab('Your Details')
+    history.push('/your-details')
+  }
   const {
     name,
     startLocation,
@@ -27,12 +27,12 @@ const Confirmation = () => {
     travelAssistanceType,
   } = formData
 
-  console.log('Form data in Confirmation:', formData) // Log formData in Confirmation component
+ 
 
   const submitFormConfirmation = event => {
     event.preventDefault()
     const tripDetails = {...formData}
-    console.log('Submitting form with details:', tripDetails) // Log trip details on submit
+ 
     addTrip(tripDetails) // Add the new trip to the list
     history.push('/awesome') // Redirect to Awesome page after confirming
   }
