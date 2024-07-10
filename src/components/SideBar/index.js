@@ -24,20 +24,30 @@ const SideBar = () => {
   const isCompleted = step => {
     switch (step) {
       case 'Your Details':
-        return yourDetailsCompleted
-      case 'Date Selection':
-        return dateSelectionCompleted
-      case 'Guests':
-        return guestsCompleted
-      case 'Travel Assistance':
-        return travelAssistanceCompleted
-      case 'Confirmation':
         return (
-          yourDetailsCompleted &&
-          dateSelectionCompleted &&
-          guestsCompleted &&
-          travelAssistanceCompleted
+          yourDetailsCompleted ||
+          activeTab === 'Date Selection' ||
+          activeTab === 'Guests' ||
+          activeTab === 'Travel Assistance' ||
+          activeTab === 'Confirmation'
         )
+      case 'Date Selection':
+        return (
+          dateSelectionCompleted ||
+          activeTab === 'Guests' ||
+          activeTab === 'Travel Assistance' ||
+          activeTab === 'Confirmation'
+        )
+      case 'Guests':
+        return (
+          guestsCompleted ||
+          activeTab === 'Travel Assistance' ||
+          activeTab === 'Confirmation'
+        )
+      case 'Travel Assistance':
+        return travelAssistanceCompleted || activeTab === 'Confirmation'
+      case 'Confirmation':
+        return activeTab === 'Confirmation'
       default:
         return false
     }
@@ -95,7 +105,10 @@ const SideBar = () => {
             >
               <li
                 className={getClassNames(step)}
-                onClick={() => changeActiveTab(step.displayText)}
+                onClick={() =>{ 
+                   changeActiveTab(step.displayText)
+                   setActiveStep(step.displayText)
+                   }}
               >
                 <p className={getNumberClassNames(step)}>
                   {isCompleted(step.displayText) ? (

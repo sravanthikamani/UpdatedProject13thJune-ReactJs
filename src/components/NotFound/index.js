@@ -11,10 +11,7 @@ const NotFound = () => (
     <p className="notfound-description">
       We are sorry, the page you requested could not be found
     </p>
-    <p className="mobile-notfound-description">
-      We are sorry, the page you <br />
-      requested could not be found.
-    </p>
+   
   </div>
 )
 export default NotFound

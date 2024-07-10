@@ -23,8 +23,8 @@ class TravelAssistance extends Component {
 
   handleSelectChange = event => {
     const {updateFormData} = this.context
-    const selectedValue = event.target.value
-    updateFormData('travelAssistanceType', selectedValue)
+    //const selectedValue = event.target.value
+    updateFormData('travelAssistanceType', event.target.value)
   }
 
   handleNextClick = () => {

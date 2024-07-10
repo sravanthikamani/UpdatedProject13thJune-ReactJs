@@ -10,10 +10,12 @@ const MyTrips = () => {
   const history = useHistory()
   const {trips} = useContext(FormContext)
 
+  // Redirect to login if jwtToken is undefined
   if (jwtToken === undefined) {
     return <Redirect to="/login" />
   }
 
+  // Function to handle logout
   const onClickLogout = () => {
     Cookies.remove('jwt_token')
     history.replace('/login')
@@ -23,21 +25,25 @@ const MyTrips = () => {
     <>
       <nav className="nav-headertrip">
         <div className="nav-contenttrip">
+          {/* Link to Home Page */}
           <Link to="/" className="travel-headingtrip">
             Travel Trip
           </Link>
           <ul className="nav-menutrip">
+            {/* Link with text "Home" */}
             <li className="nav-menu-itemtrip">
               <Link to="/" className="nav-linktrip">
                 Home
               </Link>
             </li>
+            {/* Link with text "My Trips" */}
             <li className="nav-menu-itemtrip">
               <Link to="/my-trips" className="nav-linktrip">
                 My Trips
               </Link>
             </li>
           </ul>
+          {/* Button with text "Logout" */}
           <button
             type="button"
             className="logout-buttontrip"

@@ -65,9 +65,10 @@ const DateSelection = () => {
     }
   }
 
-   const handlePrevious = () => {
+  const handlePrevious = () => {
     setActiveStep('Your Details')
     setDateSelectionCompleted(false) // Reset Date Selection completion status
+    setYourDetailsCompleted(true)
     history.push('/your-details')
   }
 

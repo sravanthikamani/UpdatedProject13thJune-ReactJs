@@ -156,6 +156,12 @@
   text-decoration: none;
   color: #ffffff;
   line-height: 28px;
+  width: 47px;
+  height: 28px;
+  top: 33px;
+  left: 611px;
+  gap: 0px;
+  opacity: 0px;
 }
 
 .logout-buttontrip {
@@ -163,16 +169,23 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  width: 103px;
-  height: 48px;
+
   margin-top: 23px;
-  padding: 12px 24px 12px 24px;
+
   border: none;
   border-radius: 8px;
   background-color: #ffffff;
   color: #304766;
   outline: none;
   cursor: pointer;
+  width: Hug (103px) px;
+  height: Hug (48px) px;
+  top: 23px;
+  left: 1101px;
+  padding: 12px 24px 12px 24px;
+  gap: 8px;
+
+  opacity: 0px;
 }
 
 @media screen and (max-width: 766px) {
@@ -225,8 +238,8 @@
   top: 189px;
   left: 162px;
   gap: 0px;
-  border-radius: 16px ;
-  border: 1px ;
+  border-radius: 16px;
+  border: 1px;
   opacity: 0px;
   margin: 10px;
 

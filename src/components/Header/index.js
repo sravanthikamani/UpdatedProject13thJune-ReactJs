@@ -12,8 +12,8 @@ const Header = props => {
   return (
     <nav className="nav-header">
       <div className="nav-content">
-        <Link to="/" className="travel-heading">
-          Travel Trip
+        <Link to="/">
+          <h1 className="travel-heading">Travel Trip</h1>
         </Link>
         <ul className="nav-menu">
           <li className="nav-menu-item">
