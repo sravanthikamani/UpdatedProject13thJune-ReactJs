@@ -1,14 +1,14 @@
-import {Link} from 'react-router-dom'
-import {useContext} from 'react'
-import {FormContext} from '../../FormContext'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { FormContext } from '../../FormContext'
 import './index.css'
 
 const stepsList = [
-  {stepId: 'YOUR_DETAILS', displayText: 'Your Details'},
-  {stepId: 'DATE_SELECTION', displayText: 'Date Selection'},
-  {stepId: 'GUESTS', displayText: 'Guests'},
-  {stepId: 'TRAVEL_ASSISTANCE', displayText: 'Travel Assistance'},
-  {stepId: 'CONFIRMATION', displayText: 'Confirmation'},
+  { stepId: 'YOUR_DETAILS', displayText: 'Your Details' },
+  { stepId: 'DATE_SELECTION', displayText: 'Date Selection' },
+  { stepId: 'GUESTS', displayText: 'Guests' },
+  { stepId: 'TRAVEL_ASSISTANCE', displayText: 'Travel Assistance' },
+  { stepId: 'CONFIRMATION', displayText: 'Confirmation' },
 ]
 
 const SideBar = () => {
@@ -22,8 +22,7 @@ const SideBar = () => {
     setActiveStep,
   } = useContext(FormContext)
 
-  const isCompleted = step => {
-    
+  const isCompleted = (step) => {
     switch (step) {
       case 'Your Details':
         return (
@@ -55,7 +54,7 @@ const SideBar = () => {
     }
   }
 
-  const getClassNames = step => {
+  const getClassNames = (step) => {
     const isActive = activeTab === step.displayText
     const isComplete = isCompleted(step.displayText)
     let classNames = 'your-details-text'
@@ -64,17 +63,17 @@ const SideBar = () => {
       classNames += ' active-tab'
     }
 
-    if (isComplete) {
+    if (isComplete && !isActive) {
       classNames += ' complete-step'
     }
 
     return classNames
   }
 
-  const getNumberClassNames = step => {
+  const getNumberClassNames = (step) => {
     const isActive = activeTab === step.displayText
     const isComplete = isCompleted(step.displayText)
-    if (isComplete) {
+    if (isComplete && !isActive) {
       return 'complete'
     }
     if (isActive) {
@@ -83,10 +82,10 @@ const SideBar = () => {
     return 'number-text'
   }
 
-  const getTextClassNames = step => {
+  const getTextClassNames = (step) => {
     const isActive = activeTab === step.displayText
     const isComplete = isCompleted(step.displayText)
-    if (isComplete) {
+    if (isComplete && !isActive) {
       return 'complete-step'
     }
     if (isActive) {
@@ -113,7 +112,7 @@ const SideBar = () => {
                 }}
               >
                 <p className={getNumberClassNames(step)}>
-                  {isCompleted(step.displayText) ? (
+                  {isCompleted(step.displayText) && activeTab !== step.displayText ? (
                     <img
                       src="https://assets.ccbp.in/frontend/react-js/travel-trip-steps-successfully-completed-img.png"
                       alt={step.displayText}
