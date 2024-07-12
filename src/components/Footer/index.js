@@ -17,18 +17,12 @@ const Footer = props => {
       <div className="footer-items">
         <Link to="/" className="home-link">
           <FiHome className="home-icon" />
-
-          <h1 className="footer-home">Home</h1>
         </Link>
         <Link to="/my-trips" className="mytrip-link">
           <MdOutlineLuggage className="mytrip-icon" />
-          <h1 className="footer-mytrip">My Trips</h1>
         </Link>
         <div className="button-container">
-          <TbLogout2 className="logout-icon" />
-          <button className="logout-btn" type="button" onClick={onClickLogout}>
-            Logout
-          </button>
+          <TbLogout2 className="logout-icon" onClick={onClickLogout}/>
         </div>
       </div>
     </footer>

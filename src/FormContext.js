@@ -14,7 +14,7 @@ const initialFormData = {
     infants: 0,
   },
   isTravelAssistanceNeeded: false,
-  travelAssistanceType: '',
+  travelAssistanceType: {value: '', displayText: ''},
   totalGuests: 1,
   errors: {},
 }

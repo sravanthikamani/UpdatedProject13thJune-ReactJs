@@ -23,23 +23,29 @@ class TravelAssistance extends Component {
 
   handleSelectChange = event => {
     const {updateFormData} = this.context
-    //const selectedValue = event.target.value
-    updateFormData('travelAssistanceType', event.target.value)
+    const selectedValue = event.target.value
+    const selectedOption = this.travelAssistanceList.find(option => option.value === selectedValue)
+    if (selectedOption) {
+      updateFormData('travelAssistanceType', { value: selectedValue, displayText: selectedOption.displayText })
+    }
   }
 
   handleNextClick = () => {
-    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} =
-      this.context
+    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} = this.context
+    console.log('Next button clicked') // Debugging log
     updateFormData('isTravelAssistanceNeeded', true)
     setTravelAssistanceCompleted(true)
     setActiveStep('Confirmation')
+    console.log('Navigating to /confirmation') // Debugging log
     this.props.history.push('/confirmation')
   }
 
   handlePreviousClick = () => {
     const {setActiveStep, setTravelAssistanceCompleted} = this.context
+    console.log('Previous button clicked') // Debugging log
     setActiveStep('Guests')
     setTravelAssistanceCompleted(false)
+    console.log('Navigating to /guests') // Debugging log
     this.props.history.push('/guests')
   }
 
@@ -87,11 +93,11 @@ class TravelAssistance extends Component {
                       </label>
                       <select
                         id="assistanceType"
-                        value={travelAssistanceType}
+                        value={travelAssistanceType?.value || ''}
                         onChange={this.handleSelectChange}
                         className="select-section"
                       >
-                        {this.travelAssistanceList.map((option, index) => (
+                        {this.travelAssistanceList.map(option => (
                           <option key={option.value} value={option.value}>
                             {option.displayText}
                           </option>

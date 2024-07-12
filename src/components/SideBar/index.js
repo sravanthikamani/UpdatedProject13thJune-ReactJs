@@ -19,9 +19,11 @@ const SideBar = () => {
     yourDetailsCompleted,
     guestsCompleted,
     travelAssistanceCompleted,
+    setActiveStep,
   } = useContext(FormContext)
 
   const isCompleted = step => {
+    
     switch (step) {
       case 'Your Details':
         return (
@@ -105,10 +107,10 @@ const SideBar = () => {
             >
               <li
                 className={getClassNames(step)}
-                onClick={() =>{ 
-                   changeActiveTab(step.displayText)
-                   setActiveStep(step.displayText)
-                   }}
+                onClick={() => {
+                  changeActiveTab(step.displayText)
+                  setActiveStep(step.displayText)
+                }}
               >
                 <p className={getNumberClassNames(step)}>
                   {isCompleted(step.displayText) ? (
