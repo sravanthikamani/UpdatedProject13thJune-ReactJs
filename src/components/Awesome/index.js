@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import SideBar from '../SideBar';
-import Header from '../Header';
-import { FormContext } from '../../FormContext';
+import React, {useContext} from 'react'
+import {Link, useHistory} from 'react-router-dom'
+import SideBar from '../SideBar'
+import Header from '../Header'
+import {FormContext} from '../../FormContext'
 
-import './index.css';
+import './index.css'
 
 const Awesome = () => {
-  const { resetFormData, changeActiveTab } = useContext(FormContext);
-  const history = useHistory();
+  const {resetFormData, changeActiveTab} = useContext(FormContext)
+  const history = useHistory()
 
   const handleNewTrip = () => {
-    resetFormData();
-    changeActiveTab('Your Details');
-    history.push('/your-details');
-  };
+    resetFormData()
+    changeActiveTab('Your Details')
+    history.push('/your-details')
+  }
 
   return (
     <>
@@ -35,7 +35,11 @@ const Awesome = () => {
                   Your booking has been confirmed.
                 </p>
 
-                <button type="button" className="awesome-button" onClick={handleNewTrip}>
+                <button
+                  type="button"
+                  className="awesome-button"
+                  onClick={handleNewTrip}
+                >
                   Book a New Trip
                 </button>
               </div>
@@ -44,7 +48,7 @@ const Awesome = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Awesome;
+export default Awesome

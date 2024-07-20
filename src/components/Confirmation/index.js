@@ -1,29 +1,30 @@
-import React, { useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { FormContext } from '../../FormContext';
-import SideBar from '../SideBar';
-import Header from '../Header';
-import './index.css';
+import React, {useContext} from 'react'
+import {useHistory, Link} from 'react-router-dom'
+import {FormContext} from '../../FormContext'
+import SideBar from '../SideBar'
+import Header from '../Header'
+import './index.css'
 
 const Confirmation = () => {
-  const { formData, addTrip, resetFormData, changeActiveTab } = useContext(FormContext);
-  const history = useHistory();
+  const {formData, addTrip, resetFormData, changeActiveTab} =
+    useContext(FormContext)
+  const history = useHistory()
 
   const handleCancel = () => {
     // Clear form data
-    resetFormData();
+    resetFormData()
     // Change active tab to 'Your Details'
-    changeActiveTab('Your Details');
-    history.push('/your-details');
-  };
+    changeActiveTab('Your Details')
+    history.push('/your-details')
+  }
 
   const submitFormConfirmation = event => {
-    event.preventDefault();
-    const tripDetails = { ...formData };
+    event.preventDefault()
+    const tripDetails = {...formData}
 
-    addTrip(tripDetails); // Add the new trip to the list
-    history.push('/awesome'); // Redirect to Awesome page after confirming
-  };
+    addTrip(tripDetails) // Add the new trip to the list
+    history.push('/awesome') // Redirect to Awesome page after confirming
+  }
 
   const {
     name,
@@ -32,9 +33,9 @@ const Confirmation = () => {
     startDate,
     endDate,
     totalGuests,
-    isTravelAssistanceNeeded,
+    
     travelAssistanceType,
-  } = formData;
+  } = formData
 
   return (
     <>
@@ -96,7 +97,9 @@ const Confirmation = () => {
                     className="travel-list-section"
                     data-testid="travel-assistance"
                   >
-                    {travelAssistanceType ? travelAssistanceType.displayText : ''}
+                    {travelAssistanceType
+                      ? travelAssistanceType.displayText
+                      : ''}
                   </p>
                 </div>
                 <div className="confirmation-container">
@@ -124,7 +127,7 @@ const Confirmation = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Confirmation;
+export default Confirmation

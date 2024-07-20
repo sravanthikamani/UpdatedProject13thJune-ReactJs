@@ -31,19 +31,6 @@ const DateSelection = () => {
       updateFormErrors({endDate: ''}) // Clear error if end date is selected
     }
   }
-  /* if (!startDate) {
-      updateFormErrors({ startDate: 'Select start date' });
-    } else if (!newEndDate) {
-      updateFormErrors({ endDate: 'Select end date' });
-    } else if (new Date(newEndDate) < new Date(startDate)) {
-      updateFormErrors({
-        endDate: 'The end date cannot be less than the start date',
-      });
-    } else {
-      updateFormData('endDate', newEndDate);
-      updateFormErrors({ endDate: '' });
-    }
-  };*/
 
   const handleNext = () => {
     const newErrors = {} // Use a different variable name to avoid shadowing

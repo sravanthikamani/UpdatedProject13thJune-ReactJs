@@ -24,14 +24,20 @@ class TravelAssistance extends Component {
   handleSelectChange = event => {
     const {updateFormData} = this.context
     const selectedValue = event.target.value
-    const selectedOption = this.travelAssistanceList.find(option => option.value === selectedValue)
+    const selectedOption = this.travelAssistanceList.find(
+      option => option.value === selectedValue,
+    )
     if (selectedOption) {
-      updateFormData('travelAssistanceType', { value: selectedValue, displayText: selectedOption.displayText })
+      updateFormData('travelAssistanceType', {
+        value: selectedValue,
+        displayText: selectedOption.displayText,
+      })
     }
   }
 
   handleNextClick = () => {
-    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} = this.context
+    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} =
+      this.context
     console.log('Next button clicked') // Debugging log
     updateFormData('isTravelAssistanceNeeded', true)
     setTravelAssistanceCompleted(true)

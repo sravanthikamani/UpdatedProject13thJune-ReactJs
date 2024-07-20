@@ -22,7 +22,7 @@ const Footer = props => {
           <MdOutlineLuggage className="mytrip-icon" />
         </Link>
         <div className="button-container">
-          <TbLogout2 className="logout-icon" onClick={onClickLogout}/>
+          <TbLogout2 className="logout-icon" onClick={onClickLogout} />
         </div>
       </div>
     </footer>
