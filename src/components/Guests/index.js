@@ -1,5 +1,5 @@
 // Guests Component
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'

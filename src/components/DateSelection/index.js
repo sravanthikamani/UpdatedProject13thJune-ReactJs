@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import {useContext} from 'react'
 import {useHistory, Link} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -25,7 +25,7 @@ const DateSelection = () => {
   }
 
   const handleChangeEndDate = event => {
-    const newEndDate = event.target.value // Use a different variable name to avoid shadowing
+    /* const newEndDate = event.target.value */ // Use a different variable name to avoid shadowing
     updateFormData('endDate', event.target.value)
     if (event.target.value) {
       updateFormErrors({endDate: ''}) // Clear error if end date is selected

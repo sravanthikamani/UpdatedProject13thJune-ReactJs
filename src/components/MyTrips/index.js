@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import {useContext} from 'react'
 import {Link, useHistory, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {FormContext} from '../../FormContext'
@@ -68,7 +68,9 @@ const MyTrips = () => {
                     </p>
                   </div>
                   <div>
-                    <button className="cancel-trip-button">Cancel</button>
+                    <button type="button" className="cancel-trip-button">
+                      Cancel
+                    </button>
                   </div>
                 </div>
               </li>

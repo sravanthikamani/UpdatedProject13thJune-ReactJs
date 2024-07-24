@@ -1,5 +1,5 @@
-import React, {Component, useContext} from 'react'
-import {withRouter, Link} from 'react-router-dom'
+import {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -14,6 +14,7 @@ class YourDetails extends Component {
     updateFormData(name, value)
     updateFormErrors({[name]: ''})
   }
+
   handleNext = e => {
     e.preventDefault()
     const {
@@ -21,8 +22,8 @@ class YourDetails extends Component {
       updateFormData,
       setActiveStep,
       setYourDetailsCompleted,
-      updateFormErrors,
     } = this.context
+    const {history} = this.props
     const {name, startLocation, endLocation} = formData
 
     const errors = {}
@@ -37,7 +38,7 @@ class YourDetails extends Component {
     if (Object.keys(errors).length === 0) {
       setYourDetailsCompleted(true)
       setActiveStep('Date Selection')
-      this.props.history.push('/date-selection')
+      history.push('/date-selection')
     }
   }
 
@@ -130,15 +131,13 @@ class YourDetails extends Component {
                     )}
                   </div>
                   <div className="next-button-container">
-                    <Link to="/date-selection">
-                      <button
-                        type="submit"
-                        className="your-next-button"
-                        onClick={this.handleNext}
-                      >
-                        Next
-                      </button>
-                    </Link>
+                    <button
+                      type="submit"
+                      className="your-next-button"
+                      onClick={this.handleNext}
+                    >
+                      Next
+                    </button>
                   </div>
                 </div>
               </form>

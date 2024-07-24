@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react'
+import {createContext, useState} from 'react'
 
 const FormContext = createContext()
 
@@ -28,8 +28,9 @@ const FormProvider = ({children}) => {
   const [dateSelectionCompleted, setDateSelectionCompleted] = useState(false)
   const [yourDetailsCompleted, setYourDetailsCompleted] = useState(false)
   const [guestsCompleted, setGuestsCompleted] = useState(false)
-  const [travelAssistanceCompleted, setTravelAssistanceCompleted] =
-    useState(false)
+  const [travelAssistanceCompleted, setTravelAssistanceCompleted] = useState(
+    false,
+  )
   const addTrip = trip => {
     setTrips(prevTrips => [...prevTrips, trip])
   }

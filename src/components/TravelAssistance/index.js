@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -36,23 +36,28 @@ class TravelAssistance extends Component {
   }
 
   handleNextClick = () => {
-    const {updateFormData, setActiveStep, setTravelAssistanceCompleted} =
-      this.context
+    const {
+      updateFormData,
+      setActiveStep,
+      setTravelAssistanceCompleted,
+    } = this.context
+    const {history} = this.props
     console.log('Next button clicked') // Debugging log
     updateFormData('isTravelAssistanceNeeded', true)
     setTravelAssistanceCompleted(true)
     setActiveStep('Confirmation')
     console.log('Navigating to /confirmation') // Debugging log
-    this.props.history.push('/confirmation')
+    history.push('/confirmation')
   }
 
   handlePreviousClick = () => {
     const {setActiveStep, setTravelAssistanceCompleted} = this.context
+    const {history} = this.props
     console.log('Previous button clicked') // Debugging log
     setActiveStep('Guests')
     setTravelAssistanceCompleted(false)
     console.log('Navigating to /guests') // Debugging log
-    this.props.history.push('/guests')
+    history.push('/guests')
   }
 
   render() {

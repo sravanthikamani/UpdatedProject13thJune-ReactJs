@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -38,7 +33,7 @@ import {FormProvider} from './FormContext'
 ] */
 
 class App extends Component {
-  state = {
+  /* state = {
     name: '',
     startLocation: '',
     endLocation: '',
@@ -46,7 +41,7 @@ class App extends Component {
     endDate: '',
     guests: '',
     travelOption: '',
-  }
+  } */
 
   handleInputChange = (name, value) => {
     this.setState({[name]: value})

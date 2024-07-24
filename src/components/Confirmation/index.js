@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import {useContext} from 'react'
 import {useHistory, Link} from 'react-router-dom'
 import {FormContext} from '../../FormContext'
 import SideBar from '../SideBar'
@@ -6,8 +6,9 @@ import Header from '../Header'
 import './index.css'
 
 const Confirmation = () => {
-  const {formData, addTrip, resetFormData, changeActiveTab} =
-    useContext(FormContext)
+  const {formData, addTrip, resetFormData, changeActiveTab} = useContext(
+    FormContext,
+  )
   const history = useHistory()
 
   const handleCancel = () => {
@@ -33,7 +34,7 @@ const Confirmation = () => {
     startDate,
     endDate,
     totalGuests,
-    
+
     travelAssistanceType,
   } = formData
 
